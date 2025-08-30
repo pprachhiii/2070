@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Each saved timeline (user profile) is identified by a unique ID and optional name.
+model Timeline {
+  id         Int          @id @default(autoincrement())
+  name       String?      // Optional: for user to label their timeline/profile
+  yearStart  Int
+  yearEnd    Int
+  policies   Policy[]
+  innovations Innovation[]
+  chartData  ChartData[]
+  results    Json         // Stores simulation results (CO₂, temperature, etc.)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+}
+
+// Each policy applied to a timeline.
+model Policy {
+  id          Int      @id @default(autoincrement())
+  timeline    Timeline @relation(fields: [timelineId], references: [id])
+  timelineId  Int
+  name        String
+  description String?
+  effect      Json     // Details of impact (e.g., environment, cityscape)
+}
+
+// Store eco-tech innovations discovered in a timeline.
+model Innovation {
+  id           Int      @id @default(autoincrement())
+  timeline     Timeline @relation(fields: [timelineId], references: [id])
+  timelineId   Int
+  name         String
+  description  String?
+  discoveredAt DateTime @default(now())
+}
+
+// Store chart data snapshots for visualizations.
+model ChartData {
+  id         Int      @id @default(autoincrement())
+  timeline   Timeline @relation(fields: [timelineId], references: [id])
+  timelineId Int
+  year       Int
+  data       Json     // Chart metrics (CO₂, temperature, etc.)
+}
