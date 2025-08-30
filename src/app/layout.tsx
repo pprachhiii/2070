@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
-import Nav from "@/components/Nav";
 import type { ReactNode } from "react";
 
 const geistSans = Geist({
@@ -26,7 +25,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-white to-gray-50 text-gray-900`}
       >
-        <Nav />
         <main className="container py-6">{children}</main>
         <Toaster position="top-right" reverseOrder={false} />
       </body>

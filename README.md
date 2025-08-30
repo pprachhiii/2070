@@ -1,46 +1,64 @@
-# Carbon Time Machine (2025 ↔ 2070)
+# Carbon Time Machine
 
 ## Concept
 
-Jump between **2025** and **2070** to see how different environmental choices shape the future. Visualize CO₂ levels, temperature rise, and eco-tech innovations that could change our world.
+Carbon Time Machine lets users **input their daily lifestyle choices** (diet, transport, hobbies, energy use, etc.) and see how those decisions ripple into the **future (2070 and beyond)**.
+
+Instead of jumping between preset years, users simulate their own path and discover:
+
+- **Environmental impacts** (CO₂ levels, temperature rise, biodiversity)
+- **Human impacts** (health, migration, food security)
+- **Animal impacts** (extinction risk, habitat loss, population trends)
+
+It’s a **personalized simulation** that makes the future feel real, based on today’s habits.
+
+---
 
 ## Features
 
-- **Year Switcher:** Toggle between 2025 and 2070.
-- **Dynamic Visuals :** Show city/nature changes.
-- **Eco-Tech Discoveries:** Highlight futuristic solutions (carbon towers, algae farms).
-- **Data Visualization:** Charts for CO₂, temperature, and other metrics.
-- **Policy Simulator :** Apply policies and view impact.
-- **User Profiles :** Save and compare different outcomes.
-- **Backend API:** Powered by Next.js and Prisma with PostgreSQL.
+- **Lifestyle Input Form** – Choose diet, transport, hobbies, and energy habits.
+- **Impact Simulation** – See projected outcomes on environment, humans, and animals.
+- **Dynamic Visuals** – Compare optimistic vs. harmful futures.
+- **Result Cards & Charts** – CO₂ ppm, °C rise, extinction risk, etc.
+- **Save & Compare Runs** – Users can label simulations (e.g. “Vegan life”, “Car commute”).
+- **Backend API** – Stores choices + results in PostgreSQL with Prisma.
+
+---
 
 ## Tech Stack
 
 - **Next.js** – Fullstack React framework (frontend + API routes)
-- **Tailwind CSS** – Rapid, responsive styling
-- **shadcn/ui** – Prebuilt UI components
-- **Chart.js / Recharts** – Data visualization
-- **PostgreSQL** – Relational database
-- **Prisma ORM** – Type-safe DB access
+- **Tailwind CSS** – Styling system
+- **shadcn/ui** – UI components
+- **Recharts** – Data visualization
+- **PostgreSQL** – Database
+- **Prisma ORM** – Type-safe database access
 - **Deployment** – Vercel / Netlify / Heroku
+
+---
 
 ## Getting Started
 
 1. **Clone the repository**
+
+   ```bash
+   git clone <repo-url>
+   cd carbon-time-machine
+   ```
+
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
-````
-
 3. **Set up PostgreSQL database**
 
-   - Create a database and update your `.env` file:
+   Create a database and update your `.env` file:
 
-     ```env
-     DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
-     ```
+   ```env
+   DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
+   ```
 
 4. **Run Prisma migrations**
 
@@ -48,17 +66,13 @@ Jump between **2025** and **2070** to see how different environmental choices sh
    npx prisma migrate dev
    ```
 
-5. **Seed database with 2025 + 2070 data**
-
-   ```bash
-   npx prisma db seed
-   ```
-
-6. **Start the development server**
+5. **Start the development server**
 
    ```bash
    npm run dev
    ```
+
+---
 
 ## Folder Structure
 
@@ -69,5 +83,6 @@ Jump between **2025** and **2070** to see how different environmental choices sh
 /styles      # Tailwind config
 ```
 
-```
-````
+---
+
+---

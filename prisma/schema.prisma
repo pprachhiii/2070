@@ -7,45 +7,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Each saved simulation
-model Timeline {
-  id          Int          @id @default(autoincrement())
-  profileId   String?      // 🔹 Add this field to associate with anonId cookie
-  name        String?      // Optional label
-  year        Int          // Either 2025 or 2070
-  policies    Policy[]
-  innovations Innovation[]
-  chartData   ChartData[]
-  results     Json         // Stores simulation results (CO₂, temperature, etc.)
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+// Each user simulation run
+model Simulation {
+  id        Int               @id @default(autoincrement())
+  profileId String?           // anonymous or logged-in user ID
+  name      String?           // optional label (e.g. "Vegan lifestyle")
+  choices   Json              // diet, transport, hobbies, etc.
+  results   SimulationResult? // 1:1 relation
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-// Policies applied 
-model Policy {
-  id          Int      @id @default(autoincrement())
-  timeline    Timeline @relation(fields: [timelineId], references: [id])
-  timelineId  Int
-  name        String
-  description String?
-  effect      Json     // Impact details
-}
+// Results broken into categories
+model SimulationResult {
+  id             Int         @id @default(autoincrement())
+  simulation     Simulation  @relation(fields: [simulationId], references: [id])
+  simulationId   Int         @unique   // 🔹 Add @unique to fix the one-to-one relation
 
-// Eco-tech innovations (future scope)
-model Innovation {
-  id           Int      @id @default(autoincrement())
-  timeline     Timeline @relation(fields: [timelineId], references: [id])
-  timelineId   Int
-  name         String
-  description  String?
-  discoveredAt DateTime @default(now())
-}
-
-// Chart data (CO₂, temperature, etc.)
-model ChartData {
-  id         Int      @id @default(autoincrement())
-  timeline   Timeline @relation(fields: [timelineId], references: [id])
-  timelineId Int
-  metric     String   // e.g. "CO2", "Temperature"
-  value      Float
+  environment    Json        // { co2: 350, temperature: 1.7, seaLevel: 0.4, biodiversity: "high" }
+  humans         Json        // { health: "improved", foodSecurity: "stable", migration: "low" }
+  animals        Json        // { extinctionRisk: "low", habitatLoss: "medium", populationTrend: "stable" }
 }
