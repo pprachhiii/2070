@@ -1,32 +1,28 @@
-# Carbon Time Machine
+# Carbon Time Machine (2025 ↔ 2070)
 
 ## Concept
 
-Travel through a virtual timeline (2025–2070) and explore how different environmental decisions shape the world. See the impact of policy choices on cityscapes, nature, and climate data.
+Jump between **2025** and **2070** to see how different environmental choices shape the future. Visualize CO₂ levels, temperature rise, and eco-tech innovations that could change our world.
 
 ## Features
 
-- **Interactive Timeline:** Slider to move between years 2025–2070.
-- **Dynamic Visuals:** Cityscape and nature visuals update based on selected policies.
-- **Animated Effects:** Floods, smog, forest regrowth, and more.
-- **Eco-Tech Innovations:** Click/hover to discover futuristic solutions (carbon capture towers, algae farms, air purifiers).
-- **Data Visualization:** Charts for CO₂ levels, temperature changes, and other metrics.
-- **Policy Simulator:** Choose policies and see their simulated impact over time.
-- **User Profiles:** Save and compare different timelines and decisions.
-- **Backend API:** Fast, scalable API for data and user management.
-- **Database:** Store user profiles, policy choices, and simulation results.
+- **Year Switcher:** Toggle between 2025 and 2070.
+- **Dynamic Visuals :** Show city/nature changes.
+- **Eco-Tech Discoveries:** Highlight futuristic solutions (carbon towers, algae farms).
+- **Data Visualization:** Charts for CO₂, temperature, and other metrics.
+- **Policy Simulator :** Apply policies and view impact.
+- **User Profiles :** Save and compare different outcomes.
+- **Backend API:** Powered by Next.js and Prisma with PostgreSQL.
 
 ## Tech Stack
 
-- **Next.js:** Fullstack React framework for UI and API routes.
-- **Tailwind CSS:** Utility-first CSS for rapid, responsive design.
-- **shadcn/ui:** Prebuilt React components for modern interfaces.
-- **Express.js (optional):** For custom backend logic if needed.
-- **Chart.js or Recharts:** Data visualization.
-- **Canvas API or Lottie:** Animations and effects.
-- **PostgreSQL:** Relational database for persistent storage.
-- **Prisma ORM:** Type-safe database access and migrations.
-- **Deployment:** Vercel, Netlify, or Heroku.
+- **Next.js** – Fullstack React framework (frontend + API routes)
+- **Tailwind CSS** – Rapid, responsive styling
+- **shadcn/ui** – Prebuilt UI components
+- **Chart.js / Recharts** – Data visualization
+- **PostgreSQL** – Relational database
+- **Prisma ORM** – Type-safe DB access
+- **Deployment** – Vercel / Netlify / Heroku
 
 ## Getting Started
 
@@ -35,13 +31,31 @@ Travel through a virtual timeline (2025–2070) and explore how different enviro
    ```bash
    npm install
    ```
+
+````
+
 3. **Set up PostgreSQL database**
-   - Create a database and update your `.env` file with the connection string.
+
+   - Create a database and update your `.env` file:
+
+     ```env
+     DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
+     ```
+
 4. **Run Prisma migrations**
+
    ```bash
    npx prisma migrate dev
    ```
-5. **Start the development server**
+
+5. **Seed database with 2025 + 2070 data**
+
+   ```bash
+   npx prisma db seed
+   ```
+
+6. **Start the development server**
+
    ```bash
    npm run dev
    ```
@@ -49,18 +63,11 @@ Travel through a virtual timeline (2025–2070) and explore how different enviro
 ## Folder Structure
 
 ```
-/app         # Next.js app directory (pages, components, API routes)
+/app         # Next.js app (pages, components, API routes)
 /prisma      # Prisma schema and migrations
 /public      # Static assets (images, animations)
-/styles      # Tailwind CSS config
+/styles      # Tailwind config
 ```
 
-## Environment Variables
-
-Create a `.env` file:
-
 ```
-DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
-```
-
----
+````

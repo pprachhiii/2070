@@ -7,31 +7,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Each saved timeline (user profile) is identified by a unique ID and optional name.
+// Each saved simulation
 model Timeline {
-  id         Int          @id @default(autoincrement())
-  name       String?      // Optional: for user to label their timeline/profile
-  yearStart  Int
-  yearEnd    Int
-  policies   Policy[]
+  id          Int          @id @default(autoincrement())
+  profileId   String?      // 🔹 Add this field to associate with anonId cookie
+  name        String?      // Optional label
+  year        Int          // Either 2025 or 2070
+  policies    Policy[]
   innovations Innovation[]
-  chartData  ChartData[]
-  results    Json         // Stores simulation results (CO₂, temperature, etc.)
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
+  chartData   ChartData[]
+  results     Json         // Stores simulation results (CO₂, temperature, etc.)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
 
-// Each policy applied to a timeline.
+// Policies applied 
 model Policy {
   id          Int      @id @default(autoincrement())
   timeline    Timeline @relation(fields: [timelineId], references: [id])
   timelineId  Int
   name        String
   description String?
-  effect      Json     // Details of impact (e.g., environment, cityscape)
+  effect      Json     // Impact details
 }
 
-// Store eco-tech innovations discovered in a timeline.
+// Eco-tech innovations (future scope)
 model Innovation {
   id           Int      @id @default(autoincrement())
   timeline     Timeline @relation(fields: [timelineId], references: [id])
@@ -41,11 +41,11 @@ model Innovation {
   discoveredAt DateTime @default(now())
 }
 
-// Store chart data snapshots for visualizations.
+// Chart data (CO₂, temperature, etc.)
 model ChartData {
   id         Int      @id @default(autoincrement())
   timeline   Timeline @relation(fields: [timelineId], references: [id])
   timelineId Int
-  year       Int
-  data       Json     // Chart metrics (CO₂, temperature, etc.)
+  metric     String   // e.g. "CO2", "Temperature"
+  value      Float
 }
