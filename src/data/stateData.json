@@ -11,14 +11,89 @@
       "majorSpecies": ["bengal-tiger", "asian-elephant", "one-horned-rhino"],
       "conservationProjects": ["Sundarbans Tiger Reserve", "Elephant corridors", "Mangrove restoration"],
       "threats": ["Cyclones", "Sea-level rise", "Industrial pollution"],
-      "population2070Prediction": {
-        "forestCover": 22.5,
-        "airQuality": 75,
-        "waterAvailability": 70,
-        "wildlifeHealth": 88,
-        "ecoScore": 81.3
+      "pollutionLevels": {
+        "air": 45,
+        "water": 38,
+        "soil": 25
       },
-      "coordinates": [22.9868, 87.8550]
+      "invasiveSpeciesImpact": 30,
+      "waterScarcityRisk": 25,
+      "forestFragmentation": 40,
+      "historicalData": {
+        "2020": {
+          "forestCover": 15.2,
+          "airQuality": 58,
+          "waterAvailability": 82,
+          "wildlifeHealth": 75,
+          "ecoScore": 70.1
+        },
+        "2030": {
+          "forestCover": 16.1,
+          "airQuality": 61,
+          "waterAvailability": 80,
+          "wildlifeHealth": 78,
+          "ecoScore": 72.8
+        },
+        "2040": {
+          "forestCover": 16.5,
+          "airQuality": 63,
+          "waterAvailability": 79,
+          "wildlifeHealth": 80,
+          "ecoScore": 74.1
+        },
+        "2050": {
+          "forestCover": 16.7,
+          "airQuality": 64,
+          "waterAvailability": 78.5,
+          "wildlifeHealth": 81,
+          "ecoScore": 75.0
+        },
+        "2060": {
+          "forestCover": 16.8,
+          "airQuality": 64.5,
+          "waterAvailability": 78.2,
+          "wildlifeHealth": 81.5,
+          "ecoScore": 75.3
+        },
+        "2070": {
+          "forestCover": 22.5,
+          "airQuality": 75,
+          "waterAvailability": 70,
+          "wildlifeHealth": 88,
+          "ecoScore": 81.3
+        }
+      },
+      "policyImpacts": {
+        "banDeforestation": { "forestCover": 15, "wildlifeHealth": 12 },
+        "renewableEnergy": { "airQuality": 20, "climateChange": -15 },
+        "antiPoaching": { "wildlifeHealth": 25 },
+        "urbanPlanning": { "forestFragmentation": -20, "wildlifeHealth": 8 }
+      },
+      "population2070Prediction": {
+        "optimistic": {
+          "forestCover": 25.2,
+          "airQuality": 80,
+          "waterAvailability": 75,
+          "wildlifeHealth": 92,
+          "ecoScore": 85.8
+        },
+        "pessimistic": {
+          "forestCover": 18.8,
+          "airQuality": 68,
+          "waterAvailability": 65,
+          "wildlifeHealth": 78,
+          "ecoScore": 75.1
+        }
+      },
+      "coordinates": [22.9868, 87.8550],
+      "criticalAlerts": [
+        {
+          "type": "species",
+          "severity": "high",
+          "message": "Bengal Tiger population declining due to habitat loss",
+          "species": ["bengal-tiger"]
+        }
+      ]
     },
     {
       "id": "karnataka",
@@ -31,34 +106,89 @@
       "majorSpecies": ["bengal-tiger", "asian-elephant"],
       "conservationProjects": ["Bandipur Tiger Reserve", "Nagarhole National Park", "Project Elephant"],
       "threats": ["Urbanization", "Mining", "Water scarcity"],
-      "population2070Prediction": {
-        "forestCover": 25.8,
-        "airQuality": 80,
-        "waterAvailability": 68,
-        "wildlifeHealth": 85,
-        "ecoScore": 79.7
+      "pollutionLevels": {
+        "air": 35,
+        "water": 42,
+        "soil": 28
       },
-      "coordinates": [15.3173, 75.7139]
-    },
-    {
-      "id": "madhya-pradesh",
-      "name": "Madhya Pradesh",
-      "forestCover": 25.1,
-      "airQuality": 68,
-      "waterAvailability": 72,
-      "wildlifeHealth": 76,
-      "ecoScore": 75.3,
-      "majorSpecies": ["bengal-tiger"],
-      "conservationProjects": ["Kanha Tiger Reserve", "Bandhavgarh National Park", "Pench Tiger Reserve"],
-      "threats": ["Agricultural expansion", "Mining", "Human-wildlife conflict"],
-      "population2070Prediction": {
-        "forestCover": 30.2,
-        "airQuality": 78,
-        "waterAvailability": 75,
-        "wildlifeHealth": 83,
-        "ecoScore": 81.6
+      "invasiveSpeciesImpact": 25,
+      "waterScarcityRisk": 45,
+      "forestFragmentation": 35,
+      "historicalData": {
+        "2020": {
+          "forestCover": 18.5,
+          "airQuality": 65,
+          "waterAvailability": 70,
+          "wildlifeHealth": 72,
+          "ecoScore": 69.8
+        },
+        "2030": {
+          "forestCover": 19.2,
+          "airQuality": 68,
+          "waterAvailability": 68,
+          "wildlifeHealth": 75,
+          "ecoScore": 71.5
+        },
+        "2040": {
+          "forestCover": 19.8,
+          "airQuality": 70,
+          "waterAvailability": 67,
+          "wildlifeHealth": 77,
+          "ecoScore": 72.8
+        },
+        "2050": {
+          "forestCover": 20.0,
+          "airQuality": 71,
+          "waterAvailability": 66,
+          "wildlifeHealth": 78,
+          "ecoScore": 73.5
+        },
+        "2060": {
+          "forestCover": 20.1,
+          "airQuality": 71.5,
+          "waterAvailability": 65.5,
+          "wildlifeHealth": 78.5,
+          "ecoScore": 73.8
+        },
+        "2070": {
+          "forestCover": 25.8,
+          "airQuality": 80,
+          "waterAvailability": 68,
+          "wildlifeHealth": 85,
+          "ecoScore": 79.7
+        }
       },
-      "coordinates": [22.9734, 78.6569]
+      "policyImpacts": {
+        "banDeforestation": { "forestCover": 12, "wildlifeHealth": 10 },
+        "renewableEnergy": { "airQuality": 18, "climateChange": -12 },
+        "antiPoaching": { "wildlifeHealth": 20 },
+        "urbanPlanning": { "forestFragmentation": -18, "wildlifeHealth": 6 }
+      },
+      "population2070Prediction": {
+        "optimistic": {
+          "forestCover": 28.5,
+          "airQuality": 85,
+          "waterAvailability": 72,
+          "wildlifeHealth": 88,
+          "ecoScore": 83.2
+        },
+        "pessimistic": {
+          "forestCover": 22.1,
+          "airQuality": 74,
+          "waterAvailability": 62,
+          "wildlifeHealth": 80,
+          "ecoScore": 75.8
+        }
+      },
+      "coordinates": [15.3173, 75.7139],
+      "criticalAlerts": [
+        {
+          "type": "environment",
+          "severity": "medium",
+          "message": "Water scarcity affecting elephant corridors",
+          "species": ["asian-elephant"]
+        }
+      ]
     },
     {
       "id": "assam",
@@ -71,134 +201,631 @@
       "majorSpecies": ["asian-elephant", "one-horned-rhino"],
       "conservationProjects": ["Kaziranga National Park", "Manas National Park", "Elephant corridors"],
       "threats": ["Flooding", "Poaching", "Tea plantation expansion"],
-      "population2070Prediction": {
-        "forestCover": 38.5,
-        "airQuality": 76,
-        "waterAvailability": 82,
-        "wildlifeHealth": 89,
-        "ecoScore": 86.4
+      "pollutionLevels": {
+        "air": 25,
+        "water": 20,
+        "soil": 15
       },
-      "coordinates": [26.2006, 92.9376]
-    },
-    {
-      "id": "kerala",
-      "name": "Kerala",
-      "forestCover": 29.0,
-      "airQuality": 74,
-      "waterAvailability": 68,
-      "wildlifeHealth": 81,
-      "ecoScore": 78.0,
-      "majorSpecies": ["asian-elephant"],
-      "conservationProjects": ["Periyar Tiger Reserve", "Silent Valley", "Elephant corridors"],
-      "threats": ["Landslides", "Tourism pressure", "Spice cultivation"],
-      "population2070Prediction": {
-        "forestCover": 32.8,
-        "airQuality": 82,
-        "waterAvailability": 72,
-        "wildlifeHealth": 87,
-        "ecoScore": 83.5
+      "invasiveSpeciesImpact": 20,
+      "waterScarcityRisk": 10,
+      "forestFragmentation": 25,
+      "historicalData": {
+        "2020": {
+          "forestCover": 33.2,
+          "airQuality": 65,
+          "waterAvailability": 88,
+          "wildlifeHealth": 80,
+          "ecoScore": 79.8
+        },
+        "2030": {
+          "forestCover": 34.1,
+          "airQuality": 67,
+          "waterAvailability": 87,
+          "wildlifeHealth": 81,
+          "ecoScore": 81.2
+        },
+        "2040": {
+          "forestCover": 34.8,
+          "airQuality": 68,
+          "waterAvailability": 86,
+          "wildlifeHealth": 82,
+          "ecoScore": 82.1
+        },
+        "2050": {
+          "forestCover": 35.3,
+          "airQuality": 69,
+          "waterAvailability": 85.5,
+          "wildlifeHealth": 83,
+          "ecoScore": 82.8
+        },
+        "2060": {
+          "forestCover": 35.6,
+          "airQuality": 69.5,
+          "waterAvailability": 85.2,
+          "wildlifeHealth": 83.5,
+          "ecoScore": 83.2
+        },
+        "2070": {
+          "forestCover": 38.5,
+          "airQuality": 76,
+          "waterAvailability": 82,
+          "wildlifeHealth": 89,
+          "ecoScore": 86.4
+        }
       },
-      "coordinates": [10.8505, 76.2711]
-    },
-    {
-      "id": "uttarakhand",
-      "name": "Uttarakhand",
-      "forestCover": 45.4,
-      "airQuality": 76,
-      "waterAvailability": 82,
-      "wildlifeHealth": 78,
-      "ecoScore": 80.4,
-      "majorSpecies": ["bengal-tiger", "snow-leopard"],
-      "conservationProjects": ["Jim Corbett National Park", "Valley of Flowers", "Snow leopard conservation"],
-      "threats": ["Climate change", "Glacier melting", "Hydroelectric projects"],
-      "population2070Prediction": {
-        "forestCover": 48.2,
-        "airQuality": 84,
-        "waterAvailability": 78,
-        "wildlifeHealth": 85,
-        "ecoScore": 84.8
+      "policyImpacts": {
+        "banDeforestation": { "forestCover": 8, "wildlifeHealth": 8 },
+        "renewableEnergy": { "airQuality": 15, "climateChange": -10 },
+        "antiPoaching": { "wildlifeHealth": 15 },
+        "urbanPlanning": { "forestFragmentation": -15, "wildlifeHealth": 5 }
       },
-      "coordinates": [30.0668, 79.0193]
-    },
-    {
-      "id": "gujarat",
-      "name": "Gujarat",
-      "forestCover": 7.3,
-      "airQuality": 65,
-      "waterAvailability": 55,
-      "wildlifeHealth": 73,
-      "ecoScore": 65.1,
-      "majorSpecies": ["asiatic-lion"],
-      "conservationProjects": ["Gir National Park", "Marine National Park", "Wild ass sanctuary"],
-      "threats": ["Water scarcity", "Industrial pollution", "Coastal erosion"],
       "population2070Prediction": {
-        "forestCover": 12.8,
-        "airQuality": 73,
-        "waterAvailability": 62,
-        "wildlifeHealth": 79,
-        "ecoScore": 71.7
+        "optimistic": {
+          "forestCover": 42.2,
+          "airQuality": 82,
+          "waterAvailability": 88,
+          "wildlifeHealth": 95,
+          "ecoScore": 91.8
+        },
+        "pessimistic": {
+          "forestCover": 35.8,
+          "airQuality": 71,
+          "waterAvailability": 78,
+          "wildlifeHealth": 85,
+          "ecoScore": 82.1
+        }
       },
-      "coordinates": [22.2587, 71.1924]
-    },
-    {
-      "id": "himachal-pradesh",
-      "name": "Himachal Pradesh",
-      "forestCover": 27.7,
-      "airQuality": 82,
-      "waterAvailability": 88,
-      "wildlifeHealth": 75,
-      "ecoScore": 80.2,
-      "majorSpecies": ["snow-leopard"],
-      "conservationProjects": ["Great Himalayan National Park", "Pin Valley National Park", "Snow leopard trust"],
-      "threats": ["Climate change", "Tourism impact", "Hydroelectric development"],
-      "population2070Prediction": {
-        "forestCover": 30.5,
-        "airQuality": 87,
-        "waterAvailability": 85,
-        "wildlifeHealth": 82,
-        "ecoScore": 84.1
-      },
-      "coordinates": [31.1048, 77.1734]
-    },
-    {
-      "id": "sikkim",
-      "name": "Sikkim",
-      "forestCover": 47.1,
-      "airQuality": 85,
-      "waterAvailability": 92,
-      "wildlifeHealth": 86,
-      "ecoScore": 87.5,
-      "majorSpecies": ["red-panda", "snow-leopard"],
-      "conservationProjects": ["Khangchendzonga National Park", "Red panda conservation", "Organic farming"],
-      "threats": ["Climate change", "Landslides", "Border infrastructure"],
-      "population2070Prediction": {
-        "forestCover": 49.8,
-        "airQuality": 90,
-        "waterAvailability": 90,
-        "wildlifeHealth": 91,
-        "ecoScore": 90.2
-      },
-      "coordinates": [27.5330, 88.5122]
+      "coordinates": [26.2006, 92.9376],
+      "criticalAlerts": []
     },
     {
       "id": "tamil-nadu",
       "name": "Tamil Nadu",
-      "forestCover": 20.2,
-      "airQuality": 62,
-      "waterAvailability": 58,
-      "wildlifeHealth": 74,
-      "ecoScore": 68.6,
-      "majorSpecies": ["asian-elephant"],
-      "conservationProjects": ["Mudumalai Tiger Reserve", "Anamalai Tiger Reserve", "Elephant corridors"],
-      "threats": ["Water scarcity", "Agricultural expansion", "Industrial pollution"],
-      "population2070Prediction": {
-        "forestCover": 24.7,
-        "airQuality": 71,
-        "waterAvailability": 65,
-        "wildlifeHealth": 80,
-        "ecoScore": 75.2
+      "forestCover": 19.3,
+      "airQuality": 68,
+      "waterAvailability": 60,
+      "wildlifeHealth": 76,
+      "ecoScore": 72.8,
+      "majorSpecies": ["lion-tailed-macaque", "asian-elephant", "indian-star-tortoise"],
+      "conservationProjects": ["Mudumalai Tiger Reserve", "Sathyamangalam Elephant Reserve", "Nilgiri Biosphere Reserve"],
+      "threats": ["Industrial pollution", "Urbanization", "Deforestation"],
+      "pollutionLevels": {
+        "air": 40,
+        "water": 35,
+        "soil": 30
       },
-      "coordinates": [11.1271, 78.6569]
+      "invasiveSpeciesImpact": 28,
+      "waterScarcityRisk": 50,
+      "forestFragmentation": 37,
+      "historicalData": {
+        "2020": {
+          "forestCover": 18.0,
+          "airQuality": 63,
+          "waterAvailability": 62,
+          "wildlifeHealth": 72,
+          "ecoScore": 70.0
+        },
+        "2030": {
+          "forestCover": 18.7,
+          "airQuality": 65,
+          "waterAvailability": 61,
+          "wildlifeHealth": 73,
+          "ecoScore": 71.2
+        },
+        "2040": {
+          "forestCover": 19.0,
+          "airQuality": 66,
+          "waterAvailability": 60,
+          "wildlifeHealth": 74,
+          "ecoScore": 72.0
+        },
+        "2050": {
+          "forestCover": 19.2,
+          "airQuality": 67,
+          "waterAvailability": 60,
+          "wildlifeHealth": 75,
+          "ecoScore": 72.5
+        },
+        "2060": {
+          "forestCover": 19.3,
+          "airQuality": 67.5,
+          "waterAvailability": 59.5,
+          "wildlifeHealth": 75.5,
+          "ecoScore": 72.8
+        },
+        "2070": {
+          "forestCover": 21.5,
+          "airQuality": 73,
+          "waterAvailability": 57,
+          "wildlifeHealth": 80,
+          "ecoScore": 77.1
+        }
+      },
+      "policyImpacts": {
+        "banDeforestation": { "forestCover": 10, "wildlifeHealth": 8 },
+        "renewableEnergy": { "airQuality": 16, "climateChange": -12 },
+        "antiPoaching": { "wildlifeHealth": 18 },
+        "urbanPlanning": { "forestFragmentation": -16, "wildlifeHealth": 5 }
+      },
+      "population2070Prediction": {
+        "optimistic": {
+          "forestCover": 24.0,
+          "airQuality": 78,
+          "waterAvailability": 60,
+          "wildlifeHealth": 85,
+          "ecoScore": 81.5
+        },
+        "pessimistic": {
+          "forestCover": 20.5,
+          "airQuality": 70,
+          "waterAvailability": 50,
+          "wildlifeHealth": 76,
+          "ecoScore": 73.0
+        }
+      },
+      "coordinates": [11.1271, 78.6569],
+      "criticalAlerts": [
+        {
+          "type": "species",
+          "severity": "medium",
+          "message": "Lion-tailed macaque population threatened by habitat fragmentation",
+          "species": ["lion-tailed-macaque"]
+        }
+      ]
+    },
+    {
+      "id": "uttarakhand",
+      "name": "Uttarakhand",
+      "forestCover": 37.2,
+      "airQuality": 75,
+      "waterAvailability": 88,
+      "wildlifeHealth": 85,
+      "ecoScore": 82.5,
+      "majorSpecies": ["bengal-tiger", "himalayan-black-bear", "asian-elephant"],
+      "conservationProjects": ["Jim Corbett National Park", "Rajaji National Park", "Valley of Flowers"],
+      "threats": ["Landslides", "Deforestation", "Tourism pressure"],
+      "pollutionLevels": {
+        "air": 30,
+        "water": 20,
+        "soil": 18
+      },
+      "invasiveSpeciesImpact": 22,
+      "waterScarcityRisk": 15,
+      "forestFragmentation": 30,
+      "historicalData": {
+        "2020": {
+          "forestCover": 35.0,
+          "airQuality": 70,
+          "waterAvailability": 90,
+          "wildlifeHealth": 80,
+          "ecoScore": 79.0
+        },
+        "2030": {
+          "forestCover": 36.0,
+          "airQuality": 72,
+          "waterAvailability": 89,
+          "wildlifeHealth": 82,
+          "ecoScore": 80.5
+        },
+        "2040": {
+          "forestCover": 36.5,
+          "airQuality": 73,
+          "waterAvailability": 88,
+          "wildlifeHealth": 83,
+          "ecoScore": 81.2
+        },
+        "2050": {
+          "forestCover": 37.0,
+          "airQuality": 74,
+          "waterAvailability": 87,
+          "wildlifeHealth": 84,
+          "ecoScore": 81.8
+        },
+        "2060": {
+          "forestCover": 37.1,
+          "airQuality": 74.5,
+          "waterAvailability": 87,
+          "wildlifeHealth": 84.5,
+          "ecoScore": 82.2
+        },
+        "2070": {
+          "forestCover": 40.0,
+          "airQuality": 80,
+          "waterAvailability": 85,
+          "wildlifeHealth": 90,
+          "ecoScore": 86.0
+        }
+      },
+      "policyImpacts": {
+        "banDeforestation": { "forestCover": 12, "wildlifeHealth": 10 },
+        "renewableEnergy": { "airQuality": 15, "climateChange": -10 },
+        "antiPoaching": { "wildlifeHealth": 18 },
+        "urbanPlanning": { "forestFragmentation": -15, "wildlifeHealth": 5 }
+      },
+      "population2070Prediction": {
+        "optimistic": {
+          "forestCover": 44.0,
+          "airQuality": 85,
+          "waterAvailability": 88,
+          "wildlifeHealth": 95,
+          "ecoScore": 90.0
+        },
+        "pessimistic": {
+          "forestCover": 38.5,
+          "airQuality": 72,
+          "waterAvailability": 80,
+          "wildlifeHealth": 82,
+          "ecoScore": 80.0
+        }
+      },
+      "coordinates": [30.0668, 79.0193],
+      "criticalAlerts": []
+    },
+    {
+      "id": "rajasthan",
+      "name": "Rajasthan",
+      "forestCover": 9.1,
+      "airQuality": 55,
+      "waterAvailability": 45,
+      "wildlifeHealth": 70,
+      "ecoScore": 60.5,
+      "majorSpecies": ["great-indian-bustard", "chinkara", "sambar-deer"],
+      "conservationProjects": ["Sariska Tiger Reserve", "Ranthambore National Park", "Desert National Park"],
+      "threats": ["Desertification", "Water scarcity", "Overgrazing"],
+      "pollutionLevels": {
+        "air": 50,
+        "water": 45,
+        "soil": 35
+      },
+      "invasiveSpeciesImpact": 30,
+      "waterScarcityRisk": 60,
+      "forestFragmentation": 50,
+      "historicalData": {
+        "2020": {
+          "forestCover": 8.0,
+          "airQuality": 50,
+          "waterAvailability": 48,
+          "wildlifeHealth": 65,
+          "ecoScore": 58.0
+        },
+        "2030": {
+          "forestCover": 8.5,
+          "airQuality": 52,
+          "waterAvailability": 47,
+          "wildlifeHealth": 66,
+          "ecoScore": 59.2
+        },
+        "2040": {
+          "forestCover": 8.7,
+          "airQuality": 53,
+          "waterAvailability": 46,
+          "wildlifeHealth": 67,
+          "ecoScore": 59.8
+        },
+        "2050": {
+          "forestCover": 8.9,
+          "airQuality": 54,
+          "waterAvailability": 45,
+          "wildlifeHealth": 68,
+          "ecoScore": 60.2
+        },
+        "2060": {
+          "forestCover": 9.0,
+          "airQuality": 54.5,
+          "waterAvailability": 44.5,
+          "wildlifeHealth": 69,
+          "ecoScore": 60.4
+        },
+        "2070": {
+          "forestCover": 10.5,
+          "airQuality": 60,
+          "waterAvailability": 42,
+          "wildlifeHealth": 72,
+          "ecoScore": 63.2
+        }
+      },
+      "policyImpacts": {
+        "banDeforestation": { "forestCover": 5, "wildlifeHealth": 5 },
+        "renewableEnergy": { "airQuality": 12, "climateChange": -8 },
+        "antiPoaching": { "wildlifeHealth": 10 },
+        "urbanPlanning": { "forestFragmentation": -10, "wildlifeHealth": 3 }
+      },
+      "population2070Prediction": {
+        "optimistic": {
+          "forestCover": 12.0,
+          "airQuality": 65,
+          "waterAvailability": 45,
+          "wildlifeHealth": 75,
+          "ecoScore": 68.0
+        },
+        "pessimistic": {
+          "forestCover": 9.5,
+          "airQuality": 55,
+          "waterAvailability": 40,
+          "wildlifeHealth": 68,
+          "ecoScore": 62.0
+        }
+      },
+      "coordinates": [27.0238, 74.2179],
+      "criticalAlerts": [
+        {
+          "type": "environment",
+          "severity": "high",
+          "message": "Desertification affecting native grasslands",
+          "species": []
+        }
+      ]
+    },
+    {
+      "id": "kerala",
+      "name": "Kerala",
+      "forestCover": 29.5,
+      "airQuality": 72,
+      "waterAvailability": 90,
+      "wildlifeHealth": 88,
+      "ecoScore": 84.5,
+      "majorSpecies": ["lion-tailed-macaque", "asian-elephant", "malabar-civet"],
+      "conservationProjects": ["Periyar Tiger Reserve", "Silent Valley National Park", "Wayanad Wildlife Sanctuary"],
+      "threats": ["Flooding", "Urbanization", "Deforestation"],
+      "pollutionLevels": {
+        "air": 32,
+        "water": 28,
+        "soil": 20
+      },
+      "invasiveSpeciesImpact": 20,
+      "waterScarcityRisk": 10,
+      "forestFragmentation": 28,
+      "historicalData": {
+        "2020": {
+          "forestCover": 27.0,
+          "airQuality": 68,
+          "waterAvailability": 92,
+          "wildlifeHealth": 85,
+          "ecoScore": 81.5
+        },
+        "2030": {
+          "forestCover": 28.0,
+          "airQuality": 70,
+          "waterAvailability": 91,
+          "wildlifeHealth": 86,
+          "ecoScore": 82.8
+        },
+        "2040": {
+          "forestCover": 28.5,
+          "airQuality": 71,
+          "waterAvailability": 90,
+          "wildlifeHealth": 87,
+          "ecoScore": 83.5
+        },
+        "2050": {
+          "forestCover": 29.0,
+          "airQuality": 71.5,
+          "waterAvailability": 90,
+          "wildlifeHealth": 87.5,
+          "ecoScore": 84.0
+        },
+        "2060": {
+          "forestCover": 29.3,
+          "airQuality": 72,
+          "waterAvailability": 89.5,
+          "wildlifeHealth": 88,
+          "ecoScore": 84.3
+        },
+        "2070": {
+          "forestCover": 32.0,
+          "airQuality": 78,
+          "waterAvailability": 87,
+          "wildlifeHealth": 91,
+          "ecoScore": 87.0
+        }
+      },
+      "policyImpacts": {
+        "banDeforestation": { "forestCover": 10, "wildlifeHealth": 10 },
+        "renewableEnergy": { "airQuality": 15, "climateChange": -10 },
+        "antiPoaching": { "wildlifeHealth": 18 },
+        "urbanPlanning": { "forestFragmentation": -12, "wildlifeHealth": 5 }
+      },
+      "population2070Prediction": {
+        "optimistic": {
+          "forestCover": 36.0,
+          "airQuality": 82,
+          "waterAvailability": 92,
+          "wildlifeHealth": 95,
+          "ecoScore": 90.0
+        },
+        "pessimistic": {
+          "forestCover": 30.0,
+          "airQuality": 72,
+          "waterAvailability": 85,
+          "wildlifeHealth": 88,
+          "ecoScore": 83.0
+        }
+      },
+      "coordinates": [10.8505, 76.2711],
+      "criticalAlerts": []
+    },
+    {
+      "id": "madhya-pradesh",
+      "name": "Madhya Pradesh",
+      "forestCover": 25.1,
+      "airQuality": 65,
+      "waterAvailability": 70,
+      "wildlifeHealth": 80,
+      "ecoScore": 75.0,
+      "majorSpecies": ["bengal-tiger", "gaur", "sloth-bear"],
+      "conservationProjects": ["Kanha Tiger Reserve", "Bandhavgarh Tiger Reserve", "Pench National Park"],
+      "threats": ["Mining", "Deforestation", "Human-wildlife conflict"],
+      "pollutionLevels": {
+        "air": 38,
+        "water": 32,
+        "soil": 28
+      },
+      "invasiveSpeciesImpact": 25,
+      "waterScarcityRisk": 35,
+      "forestFragmentation": 33,
+      "historicalData": {
+        "2020": {
+          "forestCover": 23.0,
+          "airQuality": 60,
+          "waterAvailability": 72,
+          "wildlifeHealth": 76,
+          "ecoScore": 72.0
+        },
+        "2030": {
+          "forestCover": 23.8,
+          "airQuality": 62,
+          "waterAvailability": 71,
+          "wildlifeHealth": 77,
+          "ecoScore": 73.0
+        },
+        "2040": {
+          "forestCover": 24.4,
+          "airQuality": 63,
+          "waterAvailability": 70,
+          "wildlifeHealth": 78,
+          "ecoScore": 74.0
+        },
+        "2050": {
+          "forestCover": 24.8,
+          "airQuality": 64,
+          "waterAvailability": 70,
+          "wildlifeHealth": 79,
+          "ecoScore": 74.5
+        },
+        "2060": {
+          "forestCover": 25.0,
+          "airQuality": 64.5,
+          "waterAvailability": 69.5,
+          "wildlifeHealth": 79.5,
+          "ecoScore": 74.8
+        },
+        "2070": {
+          "forestCover": 28.0,
+          "airQuality": 70,
+          "waterAvailability": 68,
+          "wildlifeHealth": 84,
+          "ecoScore": 78.0
+        }
+      },
+      "policyImpacts": {
+        "banDeforestation": { "forestCover": 10, "wildlifeHealth": 8 },
+        "renewableEnergy": { "airQuality": 15, "climateChange": -10 },
+        "antiPoaching": { "wildlifeHealth": 18 },
+        "urbanPlanning": { "forestFragmentation": -14, "wildlifeHealth": 5 }
+      },
+      "population2070Prediction": {
+        "optimistic": {
+          "forestCover": 32.0,
+          "airQuality": 75,
+          "waterAvailability": 72,
+          "wildlifeHealth": 88,
+          "ecoScore": 83.0
+        },
+        "pessimistic": {
+          "forestCover": 26.0,
+          "airQuality": 65,
+          "waterAvailability": 65,
+          "wildlifeHealth": 78,
+          "ecoScore": 75.0
+        }
+      },
+      "coordinates": [23.4733, 77.9470],
+      "criticalAlerts": []
+    },
+    {
+      "id": "uttar-pradesh",
+      "name": "Uttar Pradesh",
+      "forestCover": 7.2,
+      "airQuality": 58,
+      "waterAvailability": 65,
+      "wildlifeHealth": 68,
+      "ecoScore": 61.5,
+      "majorSpecies": ["swamp-deer", "bengal-tiger", "gharial"],
+      "conservationProjects": ["Dudhwa National Park", "Katerniaghat Wildlife Sanctuary", "National Chambal Sanctuary"],
+      "threats": ["Industrial pollution", "Urbanization", "Deforestation"],
+      "pollutionLevels": {
+        "air": 55,
+        "water": 48,
+        "soil": 35
+      },
+      "invasiveSpeciesImpact": 32,
+      "waterScarcityRisk": 50,
+      "forestFragmentation": 45,
+      "historicalData": {
+        "2020": {
+          "forestCover": 6.5,
+          "airQuality": 55,
+          "waterAvailability": 68,
+          "wildlifeHealth": 65,
+          "ecoScore": 60.0
+        },
+        "2030": {
+          "forestCover": 6.8,
+          "airQuality": 56,
+          "waterAvailability": 67,
+          "wildlifeHealth": 66,
+          "ecoScore": 60.8
+        },
+        "2040": {
+          "forestCover": 7.0,
+          "airQuality": 57,
+          "waterAvailability": 66,
+          "wildlifeHealth": 67,
+          "ecoScore": 61.2
+        },
+        "2050": {
+          "forestCover": 7.1,
+          "airQuality": 57.5,
+          "waterAvailability": 65.5,
+          "wildlifeHealth": 67.5,
+          "ecoScore": 61.4
+        },
+        "2060": {
+          "forestCover": 7.15,
+          "airQuality": 58,
+          "waterAvailability": 65,
+          "wildlifeHealth": 68,
+          "ecoScore": 61.5
+        },
+        "2070": {
+          "forestCover": 8.5,
+          "airQuality": 63,
+          "waterAvailability": 63,
+          "wildlifeHealth": 72,
+          "ecoScore": 65.0
+        }
+      },
+      "policyImpacts": {
+        "banDeforestation": { "forestCover": 6, "wildlifeHealth": 5 },
+        "renewableEnergy": { "airQuality": 12, "climateChange": -8 },
+        "antiPoaching": { "wildlifeHealth": 12 },
+        "urbanPlanning": { "forestFragmentation": -12, "wildlifeHealth": 4 }
+      },
+      "population2070Prediction": {
+        "optimistic": {
+          "forestCover": 10.0,
+          "airQuality": 68,
+          "waterAvailability": 65,
+          "wildlifeHealth": 78,
+          "ecoScore": 70.0
+        },
+        "pessimistic": {
+          "forestCover": 7.5,
+          "airQuality": 58,
+          "waterAvailability": 60,
+          "wildlifeHealth": 68,
+          "ecoScore": 62.0
+        }
+      },
+      "coordinates": [26.8467, 80.9462],
+      "criticalAlerts": [
+        {
+          "type": "species",
+          "severity": "medium",
+          "message": "Swamp deer population declining due to wetland degradation",
+          "species": ["swamp-deer"]
+        }
+      ]
     }
   ]
 }

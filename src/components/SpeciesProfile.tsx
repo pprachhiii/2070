@@ -4,8 +4,26 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { X, MapPin, Heart, Zap } from 'lucide-react';
-import tigerImage from '../assets/tiger-profile.jpg';
-import elephantImage from '../assets/elephant-profile.jpg';
+
+interface HistoricalPopulation {
+  [year: string]: number;
+}
+
+interface MigrationPatterns {
+  seasonal: boolean;
+  distance: string;
+  corridorsUsed: string[];
+}
+
+interface GeneticDiversity {
+  current: number;
+  predicted2070: number;
+}
+
+interface PopulationScenarios {
+  optimistic: number;
+  pessimistic: number;
+}
 
 interface Species {
   id: string;
@@ -25,6 +43,11 @@ interface Species {
   averageLifespan: string;
   conservationStatus2070: string;
   populationTrend: string;
+  historicalPopulation: HistoricalPopulation;
+  predatorPreyRelationships: string[];
+  migrationPatterns: MigrationPatterns;
+  geneticDiversity: GeneticDiversity;
+  populationScenarios: PopulationScenarios;
 }
 
 interface SpeciesProfileProps {
@@ -52,20 +75,12 @@ const SpeciesProfile: React.FC<SpeciesProfileProps> = ({ species, onClose }) => 
     }
   };
 
-  const getSpeciesImage = (id: string) => {
-    switch (id) {
-      case 'bengal-tiger': return tigerImage;
-      case 'asian-elephant': return elephantImage;
-      default: return '/api/placeholder/600/400';
-    }
-  };
-
   const populationChange = species.predicted2070Population - species.currentPopulation;
   const populationChangePercent = ((populationChange / species.currentPopulation) * 100).toFixed(1);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <Card className="glass-card w-full max-w-4xl max-h-[90vh] overflow-auto m-4">
+      <Card className="glass-card w-full max-w-5xl max-h-[90vh] overflow-auto m-4">
         <CardHeader className="relative">
           <Button
             variant="ghost"
@@ -77,7 +92,7 @@ const SpeciesProfile: React.FC<SpeciesProfileProps> = ({ species, onClose }) => 
           </Button>
           <div className="flex items-start gap-6">
             <img
-              src={getSpeciesImage(species.id)}
+              src={species.image || '/api/placeholder/600/400'}
               alt={species.name}
               className="w-32 h-32 rounded-lg object-cover border-2 border-primary/30"
             />
@@ -135,6 +150,16 @@ const SpeciesProfile: React.FC<SpeciesProfileProps> = ({ species, onClose }) => 
                       {populationChange > 0 ? '+' : ''}{populationChangePercent}% change
                     </span>
                   </div>
+
+                  {/* Historical Population */}
+                  <div className="mt-4">
+                    <span className="font-semibold">Historical Population:</span>
+                    <ul className="text-sm space-y-1">
+                      {Object.entries(species.historicalPopulation).map(([year, pop]) => (
+                        <li key={year}>{year}: {pop.toLocaleString()}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -165,6 +190,49 @@ const SpeciesProfile: React.FC<SpeciesProfileProps> = ({ species, onClose }) => 
                         </Badge>
                       ))}
                     </div>
+                  </div>
+
+                  {/* Predator-Prey Relationships */}
+                  <div>
+                    <span className="text-sm text-muted-foreground block mb-1">Predator-Prey Relationships</span>
+                    <div className="flex flex-wrap gap-1">
+                      {species.predatorPreyRelationships.map((prey, index) => (
+                        <Badge key={index} variant="outline" className="text-xs">
+                          {prey}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Migration Patterns */}
+                  <div>
+                    <span className="text-sm text-muted-foreground block mb-1">Migration Patterns</span>
+                    <p className="text-sm">
+                      Seasonal: {species.migrationPatterns.seasonal ? 'Yes' : 'No'}, Distance: {species.migrationPatterns.distance}
+                    </p>
+                    <div className="flex flex-wrap gap-1 mt-1">
+                      {species.migrationPatterns.corridorsUsed.map((corridor, index) => (
+                        <Badge key={index} variant="secondary" className="text-xs">
+                          {corridor}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Genetic Diversity */}
+                  <div>
+                    <span className="text-sm text-muted-foreground block mb-1">Genetic Diversity</span>
+                    <p className="text-sm">
+                      Current: {species.geneticDiversity.current}%, Predicted 2070: {species.geneticDiversity.predicted2070}%
+                    </p>
+                  </div>
+
+                  {/* Population Scenarios */}
+                  <div>
+                    <span className="text-sm text-muted-foreground block mb-1">Population Scenarios</span>
+                    <p className="text-sm">
+                      Optimistic: {species.populationScenarios.optimistic.toLocaleString()}, Pessimistic: {species.populationScenarios.pessimistic.toLocaleString()}
+                    </p>
                   </div>
                 </div>
               </CardContent>

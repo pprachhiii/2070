@@ -14,7 +14,28 @@ interface StateData {
   ecoScore: number;
   majorSpecies: string[];
   conservationProjects: string[];
+  threats?: string[];
+  pollutionLevels?: {
+    air: number;
+    water: number;
+    soil: number;
+  };
+  invasiveSpeciesImpact?: number;
+  waterScarcityRisk?: number;
+  forestFragmentation?: number;
+  historicalData?: Record<string, Partial<Omit<StateData, 'id' | 'name' | 'majorSpecies' | 'conservationProjects' | 'coordinates'>>>;
+  policyImpacts?: Record<string, Record<string, number>>;
+  population2070Prediction?: {
+    optimistic: Partial<StateData>;
+    pessimistic: Partial<StateData>;
+  };
   coordinates: number[];
+  criticalAlerts?: {
+    type: string;
+    severity: string;
+    message: string;
+    species?: string[];
+  }[];
 }
 
 interface Species {
@@ -86,7 +107,7 @@ const PopulationChart: React.FC<PopulationChartProps> = ({ stateData, speciesDat
   };
 
   return (
-    <Card className="glass-card">
+    <Card className="glass-card space-y-6">
       <CardHeader>
         <CardTitle className="text-2xl">Population Trends - {stateData.name}</CardTitle>
         <p className="text-sm text-muted-foreground">
@@ -95,6 +116,7 @@ const PopulationChart: React.FC<PopulationChartProps> = ({ stateData, speciesDat
       </CardHeader>
 
       <CardContent className="space-y-6">
+        {/* Population Timeline */}
         <div>
           <h3 className="font-semibold mb-4">Population Projection Timeline</h3>
           <div className="h-64">
@@ -128,6 +150,7 @@ const PopulationChart: React.FC<PopulationChartProps> = ({ stateData, speciesDat
           </div>
         </div>
 
+        {/* Comparison Chart */}
         <div>
           <h3 className="font-semibold mb-4">Current vs 2070 Prediction</h3>
           <div className="h-48">
@@ -152,6 +175,7 @@ const PopulationChart: React.FC<PopulationChartProps> = ({ stateData, speciesDat
           </div>
         </div>
 
+        {/* Species Summary */}
         <div>
           <h3 className="font-semibold mb-4">Species Summary</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -195,6 +219,57 @@ const PopulationChart: React.FC<PopulationChartProps> = ({ stateData, speciesDat
           </div>
         </div>
 
+        {/* Additional State Insights */}
+        <div>
+          <h3 className="font-semibold mb-4">Environmental & Policy Insights</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            {stateData.threats && (
+              <div>
+                <h4 className="font-medium">Threats:</h4>
+                <ul className="list-disc list-inside">{stateData.threats.map((t, i) => <li key={i}>{t}</li>)}</ul>
+              </div>
+            )}
+            {stateData.pollutionLevels && (
+              <div>
+                <h4 className="font-medium">Pollution Levels:</h4>
+                <ul className="list-disc list-inside">
+                  <li>Air: {stateData.pollutionLevels.air}%</li>
+                  <li>Water: {stateData.pollutionLevels.water}%</li>
+                  <li>Soil: {stateData.pollutionLevels.soil}%</li>
+                </ul>
+              </div>
+            )}
+            {stateData.invasiveSpeciesImpact !== undefined && (
+              <div>Invasive Species Impact: {stateData.invasiveSpeciesImpact}%</div>
+            )}
+            {stateData.waterScarcityRisk !== undefined && (
+              <div>Water Scarcity Risk: {stateData.waterScarcityRisk}%</div>
+            )}
+            {stateData.forestFragmentation !== undefined && (
+              <div>Forest Fragmentation: {stateData.forestFragmentation}%</div>
+            )}
+            {stateData.conservationProjects && (
+              <div>
+                <h4 className="font-medium">Conservation Projects:</h4>
+                <ul className="list-disc list-inside">{stateData.conservationProjects.map((p, i) => <li key={i}>{p}</li>)}</ul>
+              </div>
+            )}
+            {stateData.criticalAlerts && stateData.criticalAlerts.length > 0 && (
+              <div>
+                <h4 className="font-medium text-red-500">Critical Alerts:</h4>
+                <ul className="list-disc list-inside">
+                  {stateData.criticalAlerts.map((alert, i) => (
+                    <li key={i}>
+                      <strong>{alert.severity.toUpperCase()}:</strong> {alert.message}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Legend */}
         <div className="flex flex-wrap gap-4 text-xs">
           {stateSpecies.map((species, index) => (
             <div key={species.id} className="flex items-center gap-2">

@@ -21,7 +21,29 @@
       "dietType": "Carnivore",
       "averageLifespan": "15-20 years",
       "conservationStatus2070": "vulnerable",
-      "populationTrend": "increasing"
+      "populationTrend": "increasing",
+      "historicalPopulation": {
+        "2020": 2200,
+        "2030": 2350,
+        "2040": 2650,
+        "2050": 3200,
+        "2060": 3800,
+        "2070": 4200
+      },
+      "predatorPreyRelationships": ["wild-boar", "deer", "buffalo"],
+      "migrationPatterns": {
+        "seasonal": true,
+        "distance": "50-100 km",
+        "corridorsUsed": ["Corbett-Rajaji", "Bandhavgarh-Kanha"]
+      },
+      "geneticDiversity": {
+        "current": 75,
+        "predicted2070": 85
+      },
+      "populationScenarios": {
+        "optimistic": 5200,
+        "pessimistic": 3800
+      }
     },
     {
       "id": "asian-elephant",
@@ -44,7 +66,29 @@
       "dietType": "Herbivore",
       "averageLifespan": "60-80 years",
       "conservationStatus2070": "vulnerable",
-      "populationTrend": "stable"
+      "populationTrend": "stable",
+      "historicalPopulation": {
+        "2020": 24500,
+        "2030": 26200,
+        "2040": 28800,
+        "2050": 31500,
+        "2060": 33200,
+        "2070": 35000
+      },
+      "predatorPreyRelationships": [],
+      "migrationPatterns": {
+        "seasonal": true,
+        "distance": "200-500 km",
+        "corridorsUsed": ["Western Ghats", "Eastern Ghats", "Terai Arc"]
+      },
+      "geneticDiversity": {
+        "current": 68,
+        "predicted2070": 78
+      },
+      "populationScenarios": {
+        "optimistic": 42000,
+        "pessimistic": 28000
+      }
     },
     {
       "id": "one-horned-rhino",
@@ -67,76 +111,259 @@
       "dietType": "Herbivore",
       "averageLifespan": "35-45 years",
       "conservationStatus2070": "near-threatened",
-      "populationTrend": "increasing"
+      "populationTrend": "increasing",
+      "historicalPopulation": {
+        "2020": 3200,
+        "2030": 3850,
+        "2040": 4600,
+        "2050": 5400,
+        "2060": 6000,
+        "2070": 6500
+      },
+      "predatorPreyRelationships": [],
+      "migrationPatterns": {
+        "seasonal": false,
+        "distance": "5-20 km",
+        "corridorsUsed": ["Kaziranga-Orang"]
+      },
+      "geneticDiversity": {
+        "current": 62,
+        "predicted2070": 75
+      },
+      "populationScenarios": {
+        "optimistic": 8200,
+        "pessimistic": 5100
+      }
     },
     {
-      "id": "snow-leopard",
-      "name": "Snow Leopard",
-      "scientificName": "Panthera uncia",
-      "currentPopulation": 500,
-      "predicted2070Population": 800,
-      "status": "vulnerable",
-      "threats": ["Climate change", "Retaliatory killing", "Prey depletion"],
-      "conservationActions": ["High-altitude reserves", "Community-based conservation", "Prey restoration"],
-      "states": ["Himachal Pradesh", "Uttarakhand", "Jammu and Kashmir", "Ladakh"],
-      "description": "Snow Leopards adapt to changing Himalayan climates with assisted migration and climate-resilient habitats.",
+      "id": "indian-leopard",
+      "name": "Indian Leopard",
+      "scientificName": "Panthera pardus fusca",
+      "currentPopulation": 12000,
+      "predicted2070Population": 18000,
+      "status": "near-threatened",
+      "threats": ["Habitat fragmentation", "Human-wildlife conflict", "Poaching"],
+      "conservationActions": ["Protected areas", "Conflict mitigation programs", "Wildlife monitoring"],
+      "states": ["Madhya Pradesh", "Rajasthan", "Karnataka", "Tamil Nadu"],
+      "description": "The elusive Indian Leopard thrives in both forests and human-dominated landscapes, with conservation tech helping to reduce conflicts.",
       "funFacts": [
-        "They can't roar, only purr and chuff",
-        "Their large paws act like natural snowshoes",
-        "2070 climate shelters provide refuge during extreme weather"
+        "Leopards are excellent climbers and often store prey in trees",
+        "They are highly adaptable to various habitats",
+        "2070 AI collars track leopards to prevent poaching incidents"
       ],
-      "image": "/api/placeholder/400/300",
-      "habitatPreferences": ["High mountains", "Alpine areas", "Rocky terrain"],
+      "image": "/src/assets/leopard-profile.jpg",
+      "habitatPreferences": ["Forests", "Scrublands", "Grasslands"],
       "dietType": "Carnivore",
-      "averageLifespan": "12-18 years",
-      "conservationStatus2070": "vulnerable",
-      "populationTrend": "stable"
+      "averageLifespan": "12-17 years",
+      "conservationStatus2070": "least-concern",
+      "populationTrend": "increasing",
+      "historicalPopulation": {
+        "2020": 10000,
+        "2030": 11000,
+        "2040": 13000,
+        "2050": 15000,
+        "2060": 16500,
+        "2070": 18000
+      },
+      "predatorPreyRelationships": ["deer", "wild-boar", "monkeys"],
+      "migrationPatterns": {
+        "seasonal": false,
+        "distance": "10-30 km",
+        "corridorsUsed": ["Sanjay-Dubri", "Bandipur-Mudumalai"]
+      },
+      "geneticDiversity": {
+        "current": 70,
+        "predicted2070": 80
+      },
+      "populationScenarios": {
+        "optimistic": 20000,
+        "pessimistic": 15000
+      }
     },
     {
-      "id": "red-panda",
-      "name": "Red Panda",
-      "scientificName": "Ailurus fulgens",
+      "id": "sloth-bear",
+      "name": "Sloth Bear",
+      "scientificName": "Melursus ursinus",
+      "currentPopulation": 8000,
+      "predicted2070Population": 12000,
+      "status": "vulnerable",
+      "threats": ["Deforestation", "Poaching", "Human conflict"],
+      "conservationActions": ["Forest restoration", "Community awareness", "Anti-poaching patrols"],
+      "states": ["Madhya Pradesh", "Chhattisgarh", "Odisha", "Karnataka"],
+      "description": "Sloth Bears benefit from habitat restoration projects and AI-assisted human-bear conflict reduction strategies.",
+      "funFacts": [
+        "They have long claws used to dig for termites",
+        "Sloth bears are mostly nocturnal",
+        "2070 monitoring predicts population recovery hotspots"
+      ],
+      "image": "/src/assets/sloth-bear-profile.jpg",
+      "habitatPreferences": ["Dry forests", "Scrublands", "Grasslands"],
+      "dietType": "Omnivore",
+      "averageLifespan": "20-25 years",
+      "conservationStatus2070": "near-threatened",
+      "populationTrend": "increasing",
+      "historicalPopulation": {
+        "2020": 7000,
+        "2030": 8000,
+        "2040": 9000,
+        "2050": 10000,
+        "2060": 11000,
+        "2070": 12000
+      },
+      "predatorPreyRelationships": ["termites", "fruits", "small mammals"],
+      "migrationPatterns": {
+        "seasonal": false,
+        "distance": "5-20 km",
+        "corridorsUsed": ["Kanha-Pench", "Sanjay-Dubri"]
+      },
+      "geneticDiversity": {
+        "current": 65,
+        "predicted2070": 75
+      },
+      "populationScenarios": {
+        "optimistic": 14000,
+        "pessimistic": 10000
+      }
+    },
+    {
+      "id": "gharial",
+      "name": "Gharial",
+      "scientificName": "Gavialis gangeticus",
+      "currentPopulation": 900,
+      "predicted2070Population": 3000,
+      "status": "critically endangered",
+      "threats": ["River pollution", "Fishing nets", "Habitat destruction"],
+      "conservationActions": ["Riverine habitat protection", "Captive breeding", "Community awareness programs"],
+      "states": ["Uttar Pradesh", "Bihar", "Madhya Pradesh", "Assam"],
+      "description": "Gharials benefit from specialized river conservation programs and captive breeding projects, increasing their numbers steadily.",
+      "funFacts": [
+        "Gharials have long, narrow snouts ideal for catching fish",
+        "They are mostly aquatic and rarely leave water",
+        "2070 river monitoring helps prevent accidental bycatch"
+      ],
+      "image": "/src/assets/gharial-profile.jpg",
+      "habitatPreferences": ["Rivers", "Sandbanks", "Floodplains"],
+      "dietType": "Carnivore",
+      "averageLifespan": "40-60 years",
+      "conservationStatus2070": "endangered",
+      "populationTrend": "increasing",
+      "historicalPopulation": {
+        "2020": 800,
+        "2030": 1200,
+        "2040": 1600,
+        "2050": 2000,
+        "2060": 2500,
+        "2070": 3000
+      },
+      "predatorPreyRelationships": ["fish", "small reptiles"],
+      "migrationPatterns": {
+        "seasonal": true,
+        "distance": "50-150 km",
+        "corridorsUsed": ["Ganges-Yamuna", "Mahanadi"]
+      },
+      "geneticDiversity": {
+        "current": 50,
+        "predicted2070": 70
+      },
+      "populationScenarios": {
+        "optimistic": 4000,
+        "pessimistic": 2000
+      }
+    },
+    {
+      "id": "king-cobra",
+      "name": "King Cobra",
+      "scientificName": "Ophiophagus hannah",
       "currentPopulation": 2500,
       "predicted2070Population": 4000,
-      "status": "endangered",
-      "threats": ["Deforestation", "Fragmentation", "Poaching"],
-      "conservationActions": ["Bamboo plantation", "Corridor creation", "Ex-situ breeding"],
-      "states": ["Sikkim", "West Bengal", "Arunachal Pradesh", "Meghalaya"],
-      "description": "Red Pandas thrive in restored bamboo forests and climate-controlled breeding facilities by 2070.",
+      "status": "vulnerable",
+      "threats": ["Deforestation", "Poaching for venom", "Habitat fragmentation"],
+      "conservationActions": ["Habitat protection", "Anti-poaching patrols", "Venom research regulations"],
+      "states": ["Kerala", "Karnataka", "Arunachal Pradesh", "Assam"],
+      "description": "King Cobras are monitored using drones and telemetry to prevent illegal trade and track populations efficiently.",
       "funFacts": [
-        "They were discovered before Giant Pandas",
-        "Red Pandas spend most of their time in trees",
-        "2070 bamboo farms ensure year-round food supply"
+        "They are the longest venomous snakes in the world",
+        "They can 'stand up' and look a human in the eye when threatened",
+        "2070 AI monitoring tracks snake populations safely"
       ],
-      "image": "/api/placeholder/400/300",
-      "habitatPreferences": ["Temperate forests", "Bamboo groves", "High-altitude areas"],
-      "dietType": "Herbivore",
-      "averageLifespan": "8-15 years",
-      "conservationStatus2070": "vulnerable",
-      "populationTrend": "increasing"
+      "image": "/src/assets/king-cobra-profile.jpg",
+      "habitatPreferences": ["Tropical forests", "Dense undergrowth", "Wetlands"],
+      "dietType": "Carnivore",
+      "averageLifespan": "20 years",
+      "conservationStatus2070": "near-threatened",
+      "populationTrend": "increasing",
+      "historicalPopulation": {
+        "2020": 2000,
+        "2030": 2300,
+        "2040": 2700,
+        "2050": 3200,
+        "2060": 3600,
+        "2070": 4000
+      },
+      "predatorPreyRelationships": ["other snakes", "lizards", "small mammals"],
+      "migrationPatterns": {
+        "seasonal": false,
+        "distance": "10-25 km",
+        "corridorsUsed": ["Western Ghats", "Northeast forests"]
+      },
+      "geneticDiversity": {
+        "current": 60,
+        "predicted2070": 75
+      },
+      "populationScenarios": {
+        "optimistic": 5000,
+        "pessimistic": 3000
+      }
     },
     {
-      "id": "asiatic-lion",
-      "name": "Asiatic Lion",
-      "scientificName": "Panthera leo persica",
-      "currentPopulation": 674,
-      "predicted2070Population": 1200,
-      "status": "endangered",
-      "threats": ["Disease outbreak", "Genetic bottleneck", "Human conflict"],
-      "conservationActions": ["Gir protection", "Translocation plans", "Genetic management"],
-      "states": ["Gujarat"],
-      "description": "Asiatic Lions expand beyond Gir with successful translocation programs and genetic enhancement by 2070.",
+      "id": "olive-ridley-turtle",
+      "name": "Olive Ridley Sea Turtle",
+      "scientificName": "Lepidochelys olivacea",
+      "currentPopulation": 90000,
+      "predicted2070Population": 150000,
+      "status": "vulnerable",
+      "threats": ["Egg poaching", "Marine pollution", "Fishing nets"],
+      "conservationActions": ["Beach protection", "Hatchery programs", "Community education"],
+      "states": ["Odisha", "Andhra Pradesh", "Tamil Nadu", "Andaman & Nicobar Islands"],
+      "description": "Olive Ridley turtles benefit from beach conservation, AI-assisted nesting monitoring, and protection against illegal harvesting.",
       "funFacts": [
-        "They have a fold of skin along their belly that tigers lack",
-        "Asiatic Lions live in smaller prides than African lions",
-        "2070 genetic programs ensure healthy population diversity"
+        "They participate in synchronized mass nesting called 'arribada'",
+        "They migrate thousands of kilometers across oceans",
+        "2070 smart beaches track nesting success automatically"
       ],
-      "image": "/api/placeholder/400/300",
-      "habitatPreferences": ["Dry deciduous forests", "Grasslands", "Scrublands"],
-      "dietType": "Carnivore",
-      "averageLifespan": "16-20 years",
-      "conservationStatus2070": "vulnerable",
-      "populationTrend": "increasing"
+      "image": "/src/assets/olive-ridley-profile.jpg",
+      "habitatPreferences": ["Coastal beaches", "Shallow oceans", "Coral reefs"],
+      "dietType": "Omnivore",
+      "averageLifespan": "50 years",
+      "conservationStatus2070": "least-concern",
+      "populationTrend": "increasing",
+      "historicalPopulation": {
+        "2020": 75000,
+        "2030": 90000,
+        "2040": 105000,
+        "2050": 120000,
+        "2060": 135000,
+        "2070": 150000
+      },
+      "predatorPreyRelationships": ["jellyfish", "crustaceans"],
+      "migrationPatterns": {
+        "seasonal": true,
+        "distance": "500-2000 km",
+        "corridorsUsed": ["Bay of Bengal", "Arabian Sea"]
+      },
+      "geneticDiversity": {
+        "current": 72,
+        "predicted2070": 85
+      },
+      "populationScenarios": {
+        "optimistic": 180000,
+        "pessimistic": 120000
+      },
+      "multimedia": {
+        "documentaryUrl": "/videos/olive-ridley-2070.mp4",
+        "droneFootage": "/videos/turtle-nesting-drone.mp4",
+        "3dModel": "/models/olive-ridley-3d.glb"
+      }
     }
   ]
 }
