@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wildlife-bg {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(to bottom, #d6e7f0 0%, #b8d4e3 100%);
+  min-height: 100vh;
+  width: 100vw;         /* full screen width */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Sky */
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;             /* stretch fully */
+  width: 100vw;
+  height: 40vh;
+  background: linear-gradient(to bottom, #d6e7f0 0%, #c8dde8 50%, #b8d4e3 100%);
+}
+
+/* Clouds */
+.clouds {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;             /* ✅ ensures no blank gap */
+  width: 100vw;
+  height: 30vh;
+  overflow: hidden;
+}
+
+.cloud {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50px;
+  opacity: 0.9;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50px;
+}
+
+/* Cloud Variants */
+.cloud1 {
+  width: 80px;
+  height: 40px;
+  left: 5%;
+  top: 20%;
+  animation: float-cloud 20s infinite linear;
+}
+.cloud1::before {
+  width: 50px;
+  height: 30px;
+  top: -15px;
+  left: 10px;
+}
+.cloud1::after {
+  width: 60px;
+  height: 35px;
+  top: -10px;
+  right: 10px;
+}
+
+.cloud2 {
+  width: 100px;
+  height: 50px;
+  left: 25%;
+  top: 10%;
+  animation: float-cloud 25s infinite linear;
+}
+.cloud2::before {
+  width: 60px;
+  height: 40px;
+  top: -20px;
+  left: 15px;
+}
+.cloud2::after {
+  width: 70px;
+  height: 45px;
+  top: -15px;
+  right: 15px;
+}
+
+.cloud3 {
+  width: 90px;
+  height: 45px;
+  left: 50%;
+  top: 15%;
+  animation: float-cloud 18s infinite linear;
+}
+.cloud3::before {
+  width: 55px;
+  height: 35px;
+  top: -18px;
+  left: 12px;
+}
+.cloud3::after {
+  width: 65px;
+  height: 40px;
+  top: -12px;
+  right: 12px;
+}
+
+.cloud4 {
+  width: 110px;
+  height: 55px;
+  left: 75%;
+  top: 5%;
+  animation: float-cloud 22s infinite linear;
+}
+.cloud4::before {
+  width: 70px;
+  height: 45px;
+  top: -25px;
+  left: 20px;
+}
+.cloud4::after {
+  width: 80px;
+  height: 50px;
+  top: -20px;
+  right: 20px;
+}
+
+/* Mountains */
+.mountains {
+  position: absolute;
+  bottom: 60%;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 15vh;
+  background: linear-gradient(to bottom, #8fbc8f 0%, #9acd32 50%, #7cb342 100%);
+  clip-path: polygon(
+    0% 100%, 5% 80%, 12% 85%, 18% 70%, 25% 75%, 32% 60%, 
+    40% 65%, 48% 50%, 55% 55%, 62% 40%, 70% 45%, 78% 35%, 
+    85% 40%, 92% 30%, 100% 35%, 100% 100%
+  );
+}
+
+/* Field */
+.field {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 60vh;
+  background: linear-gradient(to bottom, #90EE90 0%, #7CB342 30%, #689F38 100%);
+}
+
+.grass-texture {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100%;
+  opacity: 0.3;
+  background-image:
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(76, 175, 80, 0.1) 2px,
+      rgba(76, 175, 80, 0.1) 3px),
+    repeating-linear-gradient(45deg,
+      transparent,
+      transparent 3px,
+      rgba(76, 175, 80, 0.1) 3px,
+      rgba(76, 175, 80, 0.1) 4px),
+    repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 4px,
+      rgba(76, 175, 80, 0.1) 4px,
+      rgba(76, 175, 80, 0.1) 5px);
+}
+
+/* Animations */
+@keyframes float-cloud {
+  0% {
+    transform: translateX(-150px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 150px));
+  }
+}
