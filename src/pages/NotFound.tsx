@@ -12,13 +12,213 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
+    <div className="not-found-page">
+      <style>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        .not-found-page {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+          background-color: #f8f9fa;
+          min-height: 100vh;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;   
+          align-items: center;       /* ✅ center horizontally */
+          color: #333;
+        }
+
+        .notfound-container {
+          max-width: 1000px;         /* ✅ keeps it centered but allows full width */
+          width: 100%;
+          text-align: center;
+          padding: 40px 20px;
+        }
+
+        .ufo-scene {
+          position: relative;
+          margin-bottom: 60px;
+          height: 300px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+        }
+
+        .ufo {
+          position: relative;
+          z-index: 10;
+          animation: float 3s ease-in-out infinite;
+        }
+
+        .ufo-top {
+          width: 100px;
+          height: 50px;
+          background: linear-gradient(145deg, #c0c0c0, #a8a8a8);
+          border-radius: 50px;
+          position: relative;
+          margin-bottom: -10px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+          border: 2px solid #909090;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .ufo-dome {
+          width: 60px;
+          height: 30px;
+          background: linear-gradient(145deg, rgba(135, 206, 235, 0.6), rgba(70, 130, 180, 0.4));
+          border-radius: 50px 50px 0 0;
+          position: absolute;
+          top: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+          border: 2px solid rgba(70, 130, 180, 0.3);
+          backdrop-filter: blur(2px);
+        }
+
+        .ufo-bottom {
+          width: 140px;
+          height: 30px;
+          background: linear-gradient(145deg, #d4d4d4, #b8b8b8);
+          border-radius: 70px;
+          position: relative;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+          border: 2px solid #909090;
+        }
+
+        .ufo-center-ring {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 90px;
+          height: 15px;
+          background: linear-gradient(145deg, #a0a0a0, #888888);
+          border-radius: 50px;
+          border: 1px solid #707070;
+        }
+
+        .ufo-lights {
+          position: absolute;
+          bottom: -12px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 20px;
+        }
+
+        .light {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #00bfff, #0080ff);
+          box-shadow: 0 0 15px #00bfff, 0 0 25px #0080ff;
+          animation: blink 2s infinite;
+          border: 1px solid #0066cc;
+        }
+
+        .light:nth-child(2) { animation-delay: 0.5s; }
+        .light:nth-child(3) { animation-delay: 1s; }
+        .light:nth-child(4) { animation-delay: 1.5s; }
+
+        .tractor-beam {
+          position: absolute;
+          top: 90px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 0;
+          border-left: 80px solid transparent;
+          border-right: 80px solid transparent;
+          border-top: 120px solid rgba(0, 191, 255, 0.15);
+          z-index: 1;
+          animation: beam-pulse 2s ease-in-out infinite;
+        }
+
+        .desert {
+          position: absolute;
+          bottom: -20px;
+          left: 0;
+          right: 0;
+          width: 100%;
+          height: 140px;
+          background: linear-gradient(180deg, #8B4513 0%, #A0522D 30%, #CD853F 70%, #D2B48C 100%);
+          z-index: 2;
+          border-top: 3px solid #654321;
+        }
+
+        .cactus { position: absolute; bottom: 40px; }
+        .cactus-1 { left: 100px; width: 8px; height: 35px; background: #2d5016; border-radius: 4px; }
+        .cactus-1::before { content: ''; position: absolute; top: 15px; left: -6px; width: 6px; height: 15px; background: #2d5016; border-radius: 3px; }
+        .cactus-1::after { content: ''; position: absolute; top: 8px; right: -6px; width: 6px; height: 18px; background: #2d5016; border-radius: 3px; }
+        .cactus-2 { left: 180px; width: 6px; height: 28px; background: #2d5016; border-radius: 3px; }
+        .cactus-3 { right: 120px; width: 7px; height: 32px; background: #2d5016; border-radius: 3.5px; }
+        .cactus-3::before { content: ''; position: absolute; top: 12px; left: -5px; width: 5px; height: 12px; background: #2d5016; border-radius: 2.5px; }
+
+        .rocks { position: absolute; bottom: 20px; }
+        .rock { width: 25px; height: 15px; background: #8a8a8a; border-radius: 50% / 60% 60% 40% 40%; position: absolute; }
+        .rock-1 { left: 200px; width: 20px; height: 12px; }
+        .rock-2 { right: 180px; width: 30px; height: 18px; }
+        .rock-3 { right: 220px; width: 15px; height: 10px; }
+
+        h1 {
+          font-size: 2.5rem;
+          font-weight: 600;
+          color: #2c3e50;
+          margin-bottom: 20px;
+          letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+          font-size: 1.1rem;
+          color: #7f8c8d;
+          line-height: 1.6;
+          margin-bottom: 15px;
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        @keyframes beam-pulse { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.3; } }
+      `}</style>
+
+      <div className="notfound-container">
+        <div className="ufo-scene">
+          <div className="ufo">
+            <div className="ufo-top">
+              <div className="ufo-dome"></div>
+            </div>
+            <div className="ufo-bottom">
+              <div className="ufo-center-ring"></div>
+              <div className="ufo-lights">
+                <div className="light"></div>
+                <div className="light"></div>
+                <div className="light"></div>
+                <div className="light"></div>
+                <div className="light"></div>
+              </div>
+            </div>
+          </div>
+          <div className="tractor-beam"></div>
+          <div className="desert">
+            <div className="cactus cactus-1"></div>
+            <div className="cactus cactus-2"></div>
+            <div className="cactus cactus-3"></div>
+            <div className="rocks">
+              <div className="rock rock-1"></div>
+              <div className="rock rock-2"></div>
+              <div className="rock rock-3"></div>
+            </div>
+          </div>
+        </div>
+
+        <h1>It looks like you are lost</h1>
+        <p className="subtitle">Well, that's not the one you are searching for.</p>
+        <p className="subtitle">Let&apos;s try it again.</p>
       </div>
     </div>
   );
