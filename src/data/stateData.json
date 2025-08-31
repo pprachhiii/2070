@@ -1,0 +1,204 @@
+{
+  "states": [
+    {
+      "id": "west-bengal",
+      "name": "West Bengal",
+      "forestCover": 16.9,
+      "airQuality": 65,
+      "waterAvailability": 78,
+      "wildlifeHealth": 82,
+      "ecoScore": 75.5,
+      "majorSpecies": ["bengal-tiger", "asian-elephant", "one-horned-rhino"],
+      "conservationProjects": ["Sundarbans Tiger Reserve", "Elephant corridors", "Mangrove restoration"],
+      "threats": ["Cyclones", "Sea-level rise", "Industrial pollution"],
+      "population2070Prediction": {
+        "forestCover": 22.5,
+        "airQuality": 75,
+        "waterAvailability": 70,
+        "wildlifeHealth": 88,
+        "ecoScore": 81.3
+      },
+      "coordinates": [22.9868, 87.8550]
+    },
+    {
+      "id": "karnataka",
+      "name": "Karnataka",
+      "forestCover": 20.2,
+      "airQuality": 72,
+      "waterAvailability": 65,
+      "wildlifeHealth": 79,
+      "ecoScore": 74.1,
+      "majorSpecies": ["bengal-tiger", "asian-elephant"],
+      "conservationProjects": ["Bandipur Tiger Reserve", "Nagarhole National Park", "Project Elephant"],
+      "threats": ["Urbanization", "Mining", "Water scarcity"],
+      "population2070Prediction": {
+        "forestCover": 25.8,
+        "airQuality": 80,
+        "waterAvailability": 68,
+        "wildlifeHealth": 85,
+        "ecoScore": 79.7
+      },
+      "coordinates": [15.3173, 75.7139]
+    },
+    {
+      "id": "madhya-pradesh",
+      "name": "Madhya Pradesh",
+      "forestCover": 25.1,
+      "airQuality": 68,
+      "waterAvailability": 72,
+      "wildlifeHealth": 76,
+      "ecoScore": 75.3,
+      "majorSpecies": ["bengal-tiger"],
+      "conservationProjects": ["Kanha Tiger Reserve", "Bandhavgarh National Park", "Pench Tiger Reserve"],
+      "threats": ["Agricultural expansion", "Mining", "Human-wildlife conflict"],
+      "population2070Prediction": {
+        "forestCover": 30.2,
+        "airQuality": 78,
+        "waterAvailability": 75,
+        "wildlifeHealth": 83,
+        "ecoScore": 81.6
+      },
+      "coordinates": [22.9734, 78.6569]
+    },
+    {
+      "id": "assam",
+      "name": "Assam",
+      "forestCover": 35.8,
+      "airQuality": 70,
+      "waterAvailability": 85,
+      "wildlifeHealth": 84,
+      "ecoScore": 83.7,
+      "majorSpecies": ["asian-elephant", "one-horned-rhino"],
+      "conservationProjects": ["Kaziranga National Park", "Manas National Park", "Elephant corridors"],
+      "threats": ["Flooding", "Poaching", "Tea plantation expansion"],
+      "population2070Prediction": {
+        "forestCover": 38.5,
+        "airQuality": 76,
+        "waterAvailability": 82,
+        "wildlifeHealth": 89,
+        "ecoScore": 86.4
+      },
+      "coordinates": [26.2006, 92.9376]
+    },
+    {
+      "id": "kerala",
+      "name": "Kerala",
+      "forestCover": 29.0,
+      "airQuality": 74,
+      "waterAvailability": 68,
+      "wildlifeHealth": 81,
+      "ecoScore": 78.0,
+      "majorSpecies": ["asian-elephant"],
+      "conservationProjects": ["Periyar Tiger Reserve", "Silent Valley", "Elephant corridors"],
+      "threats": ["Landslides", "Tourism pressure", "Spice cultivation"],
+      "population2070Prediction": {
+        "forestCover": 32.8,
+        "airQuality": 82,
+        "waterAvailability": 72,
+        "wildlifeHealth": 87,
+        "ecoScore": 83.5
+      },
+      "coordinates": [10.8505, 76.2711]
+    },
+    {
+      "id": "uttarakhand",
+      "name": "Uttarakhand",
+      "forestCover": 45.4,
+      "airQuality": 76,
+      "waterAvailability": 82,
+      "wildlifeHealth": 78,
+      "ecoScore": 80.4,
+      "majorSpecies": ["bengal-tiger", "snow-leopard"],
+      "conservationProjects": ["Jim Corbett National Park", "Valley of Flowers", "Snow leopard conservation"],
+      "threats": ["Climate change", "Glacier melting", "Hydroelectric projects"],
+      "population2070Prediction": {
+        "forestCover": 48.2,
+        "airQuality": 84,
+        "waterAvailability": 78,
+        "wildlifeHealth": 85,
+        "ecoScore": 84.8
+      },
+      "coordinates": [30.0668, 79.0193]
+    },
+    {
+      "id": "gujarat",
+      "name": "Gujarat",
+      "forestCover": 7.3,
+      "airQuality": 65,
+      "waterAvailability": 55,
+      "wildlifeHealth": 73,
+      "ecoScore": 65.1,
+      "majorSpecies": ["asiatic-lion"],
+      "conservationProjects": ["Gir National Park", "Marine National Park", "Wild ass sanctuary"],
+      "threats": ["Water scarcity", "Industrial pollution", "Coastal erosion"],
+      "population2070Prediction": {
+        "forestCover": 12.8,
+        "airQuality": 73,
+        "waterAvailability": 62,
+        "wildlifeHealth": 79,
+        "ecoScore": 71.7
+      },
+      "coordinates": [22.2587, 71.1924]
+    },
+    {
+      "id": "himachal-pradesh",
+      "name": "Himachal Pradesh",
+      "forestCover": 27.7,
+      "airQuality": 82,
+      "waterAvailability": 88,
+      "wildlifeHealth": 75,
+      "ecoScore": 80.2,
+      "majorSpecies": ["snow-leopard"],
+      "conservationProjects": ["Great Himalayan National Park", "Pin Valley National Park", "Snow leopard trust"],
+      "threats": ["Climate change", "Tourism impact", "Hydroelectric development"],
+      "population2070Prediction": {
+        "forestCover": 30.5,
+        "airQuality": 87,
+        "waterAvailability": 85,
+        "wildlifeHealth": 82,
+        "ecoScore": 84.1
+      },
+      "coordinates": [31.1048, 77.1734]
+    },
+    {
+      "id": "sikkim",
+      "name": "Sikkim",
+      "forestCover": 47.1,
+      "airQuality": 85,
+      "waterAvailability": 92,
+      "wildlifeHealth": 86,
+      "ecoScore": 87.5,
+      "majorSpecies": ["red-panda", "snow-leopard"],
+      "conservationProjects": ["Khangchendzonga National Park", "Red panda conservation", "Organic farming"],
+      "threats": ["Climate change", "Landslides", "Border infrastructure"],
+      "population2070Prediction": {
+        "forestCover": 49.8,
+        "airQuality": 90,
+        "waterAvailability": 90,
+        "wildlifeHealth": 91,
+        "ecoScore": 90.2
+      },
+      "coordinates": [27.5330, 88.5122]
+    },
+    {
+      "id": "tamil-nadu",
+      "name": "Tamil Nadu",
+      "forestCover": 20.2,
+      "airQuality": 62,
+      "waterAvailability": 58,
+      "wildlifeHealth": 74,
+      "ecoScore": 68.6,
+      "majorSpecies": ["asian-elephant"],
+      "conservationProjects": ["Mudumalai Tiger Reserve", "Anamalai Tiger Reserve", "Elephant corridors"],
+      "threats": ["Water scarcity", "Agricultural expansion", "Industrial pollution"],
+      "population2070Prediction": {
+        "forestCover": 24.7,
+        "airQuality": 71,
+        "waterAvailability": 65,
+        "wildlifeHealth": 80,
+        "ecoScore": 75.2
+      },
+      "coordinates": [11.1271, 78.6569]
+    }
+  ]
+}

@@ -1,88 +1,69 @@
-# Carbon Time Machine
+# React + TypeScript + Vite
 
-## Concept
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Carbon Time Machine lets users **input their daily lifestyle choices** (diet, transport, hobbies, energy use, etc.) and see how those decisions ripple into the **future (2070 and beyond)**.
+Currently, two official plugins are available:
 
-Instead of jumping between preset years, users simulate their own path and discover:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- **Environmental impacts** (CO₂ levels, temperature rise, biodiversity)
-- **Human impacts** (health, migration, food security)
-- **Animal impacts** (extinction risk, habitat loss, population trends)
+## Expanding the ESLint configuration
 
-It’s a **personalized simulation** that makes the future feel real, based on today’s habits.
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
----
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-## Features
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
 
-- **Lifestyle Input Form** – Choose diet, transport, hobbies, and energy habits.
-- **Impact Simulation** – See projected outcomes on environment, humans, and animals.
-- **Dynamic Visuals** – Compare optimistic vs. harmful futures.
-- **Result Cards & Charts** – CO₂ ppm, °C rise, extinction risk, etc.
-- **Save & Compare Runs** – Users can label simulations (e.g. “Vegan life”, “Car commute”).
-- **Backend API** – Stores choices + results in PostgreSQL with Prisma.
-
----
-
-## Tech Stack
-
-- **Next.js** – Fullstack React framework (frontend + API routes)
-- **Tailwind CSS** – Styling system
-- **shadcn/ui** – UI components
-- **Recharts** – Data visualization
-- **PostgreSQL** – Database
-- **Prisma ORM** – Type-safe database access
-- **Deployment** – Vercel / Netlify / Heroku
-
----
-
-## Getting Started
-
-1. **Clone the repository**
-
-   ```bash
-   git clone <repo-url>
-   cd carbon-time-machine
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Set up PostgreSQL database**
-
-   Create a database and update your `.env` file:
-
-   ```env
-   DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
-   ```
-
-4. **Run Prisma migrations**
-
-   ```bash
-   npx prisma migrate dev
-   ```
-
-5. **Start the development server**
-
-   ```bash
-   npm run dev
-   ```
-
----
-
-## Folder Structure
-
-```
-/app         # Next.js app (pages, components, API routes)
-/prisma      # Prisma schema and migrations
-/public      # Static assets (images, animations)
-/styles      # Tailwind config
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
----
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
----
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```

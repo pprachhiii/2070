@@ -1,0 +1,142 @@
+{
+  "species": [
+    {
+      "id": "bengal-tiger",
+      "name": "Bengal Tiger",
+      "scientificName": "Panthera tigris tigris",
+      "currentPopulation": 2500,
+      "predicted2070Population": 4200,
+      "status": "endangered",
+      "threats": ["Habitat loss", "Human-wildlife conflict", "Poaching"],
+      "conservationActions": ["Protected reserves", "Anti-poaching patrols", "Wildlife corridors"],
+      "states": ["West Bengal", "Uttarakhand", "Madhya Pradesh", "Karnataka", "Maharashtra"],
+      "description": "The majestic Bengal Tiger, India's national animal, shows promising recovery through advanced conservation technology and expanded protected areas.",
+      "funFacts": [
+        "Tigers can leap up to 9 meters horizontally",
+        "Each tiger's stripe pattern is unique like a fingerprint",
+        "By 2070, AI-powered tracking helps monitor every tiger in real-time"
+      ],
+      "image": "/src/assets/tiger-profile.jpg",
+      "habitatPreferences": ["Dense forests", "Grasslands", "Mangroves"],
+      "dietType": "Carnivore",
+      "averageLifespan": "15-20 years",
+      "conservationStatus2070": "vulnerable",
+      "populationTrend": "increasing"
+    },
+    {
+      "id": "asian-elephant",
+      "name": "Asian Elephant",
+      "scientificName": "Elephas maximus",
+      "currentPopulation": 27000,
+      "predicted2070Population": 35000,
+      "status": "endangered",
+      "threats": ["Habitat fragmentation", "Human encroachment", "Railway accidents"],
+      "conservationActions": ["Elephant corridors", "Railway safety measures", "Community engagement"],
+      "states": ["Kerala", "Karnataka", "Tamil Nadu", "Assam", "West Bengal", "Odisha"],
+      "description": "Asian Elephants benefit from revolutionary wildlife corridor networks and AI-monitored migration routes by 2070.",
+      "funFacts": [
+        "Elephants can communicate through infrasonic calls up to 6 km away",
+        "They mourn their dead and have been observed performing 'funeral' rituals",
+        "2070 smart corridors use elephant-specific traffic signals"
+      ],
+      "image": "/src/assets/elephant-profile.jpg",
+      "habitatPreferences": ["Tropical forests", "Grasslands", "Scrublands"],
+      "dietType": "Herbivore",
+      "averageLifespan": "60-80 years",
+      "conservationStatus2070": "vulnerable",
+      "populationTrend": "stable"
+    },
+    {
+      "id": "one-horned-rhino",
+      "name": "Greater One-Horned Rhinoceros",
+      "scientificName": "Rhinoceros unicornis",
+      "currentPopulation": 3700,
+      "predicted2070Population": 6500,
+      "status": "vulnerable",
+      "threats": ["Poaching for horn", "Habitat loss", "Flooding"],
+      "conservationActions": ["Kaziranga protection", "Translocation programs", "Community involvement"],
+      "states": ["Assam", "West Bengal", "Uttar Pradesh"],
+      "description": "The Greater One-Horned Rhino's population flourishes with drone surveillance and genetic diversity programs.",
+      "funFacts": [
+        "Their 'horn' is actually made of keratin, like human hair",
+        "They're excellent swimmers despite their bulky appearance",
+        "2070 biobanks preserve genetic diversity for future generations"
+      ],
+      "image": "/api/placeholder/400/300",
+      "habitatPreferences": ["Grasslands", "Wetlands", "Riverine areas"],
+      "dietType": "Herbivore",
+      "averageLifespan": "35-45 years",
+      "conservationStatus2070": "near-threatened",
+      "populationTrend": "increasing"
+    },
+    {
+      "id": "snow-leopard",
+      "name": "Snow Leopard",
+      "scientificName": "Panthera uncia",
+      "currentPopulation": 500,
+      "predicted2070Population": 800,
+      "status": "vulnerable",
+      "threats": ["Climate change", "Retaliatory killing", "Prey depletion"],
+      "conservationActions": ["High-altitude reserves", "Community-based conservation", "Prey restoration"],
+      "states": ["Himachal Pradesh", "Uttarakhand", "Jammu and Kashmir", "Ladakh"],
+      "description": "Snow Leopards adapt to changing Himalayan climates with assisted migration and climate-resilient habitats.",
+      "funFacts": [
+        "They can't roar, only purr and chuff",
+        "Their large paws act like natural snowshoes",
+        "2070 climate shelters provide refuge during extreme weather"
+      ],
+      "image": "/api/placeholder/400/300",
+      "habitatPreferences": ["High mountains", "Alpine areas", "Rocky terrain"],
+      "dietType": "Carnivore",
+      "averageLifespan": "12-18 years",
+      "conservationStatus2070": "vulnerable",
+      "populationTrend": "stable"
+    },
+    {
+      "id": "red-panda",
+      "name": "Red Panda",
+      "scientificName": "Ailurus fulgens",
+      "currentPopulation": 2500,
+      "predicted2070Population": 4000,
+      "status": "endangered",
+      "threats": ["Deforestation", "Fragmentation", "Poaching"],
+      "conservationActions": ["Bamboo plantation", "Corridor creation", "Ex-situ breeding"],
+      "states": ["Sikkim", "West Bengal", "Arunachal Pradesh", "Meghalaya"],
+      "description": "Red Pandas thrive in restored bamboo forests and climate-controlled breeding facilities by 2070.",
+      "funFacts": [
+        "They were discovered before Giant Pandas",
+        "Red Pandas spend most of their time in trees",
+        "2070 bamboo farms ensure year-round food supply"
+      ],
+      "image": "/api/placeholder/400/300",
+      "habitatPreferences": ["Temperate forests", "Bamboo groves", "High-altitude areas"],
+      "dietType": "Herbivore",
+      "averageLifespan": "8-15 years",
+      "conservationStatus2070": "vulnerable",
+      "populationTrend": "increasing"
+    },
+    {
+      "id": "asiatic-lion",
+      "name": "Asiatic Lion",
+      "scientificName": "Panthera leo persica",
+      "currentPopulation": 674,
+      "predicted2070Population": 1200,
+      "status": "endangered",
+      "threats": ["Disease outbreak", "Genetic bottleneck", "Human conflict"],
+      "conservationActions": ["Gir protection", "Translocation plans", "Genetic management"],
+      "states": ["Gujarat"],
+      "description": "Asiatic Lions expand beyond Gir with successful translocation programs and genetic enhancement by 2070.",
+      "funFacts": [
+        "They have a fold of skin along their belly that tigers lack",
+        "Asiatic Lions live in smaller prides than African lions",
+        "2070 genetic programs ensure healthy population diversity"
+      ],
+      "image": "/api/placeholder/400/300",
+      "habitatPreferences": ["Dry deciduous forests", "Grasslands", "Scrublands"],
+      "dietType": "Carnivore",
+      "averageLifespan": "16-20 years",
+      "conservationStatus2070": "vulnerable",
+      "populationTrend": "increasing"
+    }
+  ]
+}
