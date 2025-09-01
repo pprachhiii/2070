@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { MapPin, Zap } from 'lucide-react';
 import InteractiveMap from './InteractiveMap';
@@ -11,7 +9,6 @@ import ConservationActions from './ConservationActions';
 import EcoScoreDisplay from './EcoScoreDisplay';
 import PopulationChart from './PopulationChart';
 import ComparativeAnalytics from './ComparativeAnalytics';
-import InteractiveAlerts from './InteractiveAlerts';
 import AdvancedSimulation from './AdvancedSimulation';
 import DataDrivenInsights from './DataDrivenInsights';
 import AdvancedVisualizations from './AdvancedVisualizations';
@@ -234,13 +231,7 @@ const [simulatedSpecies, setSimulatedSpecies] = useState<SpeciesData[]>(enhanced
 
           {/* Overview Tab - Original Dashboard */}
           <TabsContent value="overview" className="space-y-5">
-            {/* Alerts Section */}
-            <InteractiveAlerts
-              statesData={simulatedData}
-              speciesData={simulatedSpecies}
-              currentEnvironmentalFactors={environmentalFactors}
-            />
-
+            
             {/* Main Dashboard Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
               {/* Map Section */}
@@ -335,55 +326,7 @@ const [simulatedSpecies, setSimulatedSpecies] = useState<SpeciesData[]>(enhanced
               </div>
             </div>
 
-            {/* Species Overview */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {simulatedSpecies.slice(0, 6).map((species) => (
-                <Card
-                  key={species.id}
-                  className="glass-card hover:scale-105 transition-all duration-300 cursor-pointer"
-                  onClick={() => setSelectedSpecies(species.id)}
-                >
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="text-3xl">🐅</div>
-                      <div>
-                        <h3 className="font-bold text-lg">{species.name}</h3>
-                        <Badge
-                          className={`status-${species.status}`}
-                          variant="outline"
-                        >
-                          {species.status}
-                        </Badge>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span>Current Population</span>
-                          <span className="font-medium">{species.currentPopulation.toLocaleString()}</span>
-                        </div>
-                        <div className="flex justify-between text-sm mb-2">
-                          <span>2070 Prediction</span>
-                          <span className={`font-medium ${
-                            species.predicted2070Population > species.currentPopulation
-                              ? 'text-green-400'
-                              : 'text-red-400'
-                          }`}>
-                            {species.predicted2070Population.toLocaleString()}
-                          </span>
-                        </div>
-                        <Progress
-                          value={(species.predicted2070Population / species.currentPopulation) * 50}
-                          className="h-2"
-                        />
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
+            
             {/* State Details */}
             {selectedStateData && (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">

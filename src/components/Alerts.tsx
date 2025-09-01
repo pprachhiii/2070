@@ -26,7 +26,7 @@ const Alerts: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-card to-background p-6">
+    <div className="p-6">
       <Card className="glass-card">
         <CardHeader>
           <CardTitle className="text-red-500 text-3xl">
