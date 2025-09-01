@@ -4,42 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AlertTriangle, AlertCircle, Info, Filter, Bell, X } from 'lucide-react';
-
-interface Alert {
-  id: string;
-  type: 'species' | 'environment' | 'ecosystem';
-  severity: 'low' | 'medium' | 'high' | 'critical';
-  message: string;
-  state?: string;
-  species?: string[];
-  timestamp: Date;
-  metric?: string;
-  value?: number;
-  threshold?: number;
-}
-
-interface StateData {
-  name: string;
-  ecoScore: number;
-  forestCover: number;
-  waterAvailability: number;
-  airQuality: number;
-  criticalAlerts?: Alert[];
-}
-
-interface SpeciesData {
-  name: string;
-  currentPopulation: number;
-  predicted2070Population: number;
-  geneticDiversity?: { current: number; predicted2070?: number };
-  status?: string;
-}
-
-interface EnvironmentalFactors {
-  deforestation: number;
-  climateChange: number;
-  conservation: number;
-}
+import type { Alert, StateData, SpeciesData, EnvironmentalFactors } from '@/lib/types';
 
 interface InteractiveAlertsProps {
   statesData: StateData[];
@@ -70,7 +35,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
           severity: 'critical',
           message: `${state.name} eco-score critically low at ${state.ecoScore.toFixed(1)}`,
           state: state.name,
-          timestamp: new Date(),
+          timestamp: new Date().toISOString(),
           metric: 'ecoScore',
           value: state.ecoScore,
           threshold: 50
@@ -82,7 +47,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
           severity: 'medium',
           message: `${state.name} eco-score below warning threshold at ${state.ecoScore.toFixed(1)}`,
           state: state.name,
-          timestamp: new Date(),
+          timestamp: new Date().toISOString(),
           metric: 'ecoScore',
           value: state.ecoScore,
           threshold: 65
@@ -96,7 +61,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
           severity: 'high',
           message: `Critical deforestation in ${state.name}: ${state.forestCover.toFixed(1)}% forest cover remaining`,
           state: state.name,
-          timestamp: new Date(),
+          timestamp: new Date().toISOString(),
           metric: 'forestCover',
           value: state.forestCover,
           threshold: 10
@@ -110,7 +75,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
           severity: 'high',
           message: `Severe water scarcity in ${state.name}: ${state.waterAvailability.toFixed(1)}% availability`,
           state: state.name,
-          timestamp: new Date(),
+          timestamp: new Date().toISOString(),
           metric: 'waterAvailability',
           value: state.waterAvailability,
           threshold: 40
@@ -124,7 +89,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
           severity: 'medium',
           message: `Poor air quality in ${state.name}: ${state.airQuality.toFixed(1)}% quality index`,
           state: state.name,
-          timestamp: new Date(),
+          timestamp: new Date().toISOString(),
           metric: 'airQuality',
           value: state.airQuality,
           threshold: 50
@@ -136,7 +101,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
           newAlerts.push({
             ...alert,
             id: `alert-${alertId++}`,
-            timestamp: new Date()
+            timestamp: new Date().toISOString()
           });
         });
       }
@@ -152,7 +117,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
           severity: 'critical',
           message: `${species.name} population projected to decline by ${Math.abs(populationChange).toFixed(1)}%`,
           species: [species.name],
-          timestamp: new Date()
+          timestamp: new Date().toISOString(),
         });
       } else if (populationChange < -20) {
         newAlerts.push({
@@ -161,7 +126,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
           severity: 'high',
           message: `${species.name} population at risk with ${Math.abs(populationChange).toFixed(1)}% decline predicted`,
           species: [species.name],
-          timestamp: new Date()
+          timestamp: new Date().toISOString()
         });
       }
 
@@ -172,7 +137,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
           severity: 'medium',
           message: `${species.name} genetic diversity critically low at ${species.geneticDiversity.current}%`,
           species: [species.name],
-          timestamp: new Date()
+          timestamp: new Date().toISOString(),
         });
       }
 
@@ -183,7 +148,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
           severity: 'critical',
           message: `${species.name} is critically endangered with only ${species.currentPopulation.toLocaleString()} individuals remaining`,
           species: [species.name],
-          timestamp: new Date()
+          timestamp: new Date().toISOString(),
         });
       }
     });
@@ -194,7 +159,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
         type: 'environment',
         severity: 'critical',
         message: `Extreme deforestation levels detected: ${currentEnvironmentalFactors.deforestation}%`,
-        timestamp: new Date()
+        timestamp: new Date().toISOString(),
       });
     }
 
@@ -204,7 +169,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
         type: 'environment',
         severity: 'high',
         message: `Severe climate change impact: ${currentEnvironmentalFactors.climateChange}%`,
-        timestamp: new Date()
+        timestamp: new Date().toISOString(),
       });
     }
 
@@ -214,7 +179,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
         type: 'environment',
         severity: 'medium',
         message: `Conservation efforts insufficient: ${currentEnvironmentalFactors.conservation}%`,
-        timestamp: new Date()
+        timestamp: new Date().toISOString(),
       });
     }
 
@@ -232,12 +197,20 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
       filtered = filtered.filter(alert => alert.type === typeFilter);
     }
 
-    const severityOrder = { critical: 4, high: 3, medium: 2, low: 1 };
-    filtered.sort((a, b) => {
-      const severityDiff = severityOrder[b.severity] - severityOrder[a.severity];
-      if (severityDiff !== 0) return severityDiff;
-      return b.timestamp.getTime() - a.timestamp.getTime();
-    });
+    const severityOrder: Record<string, number> = {
+  critical: 4,
+  high: 3,
+  medium: 2,
+  low: 1,
+};
+
+filtered.sort((a, b) => {
+  const severityDiff = (severityOrder[b.severity] ?? 0) - (severityOrder[a.severity] ?? 0);
+  if (severityDiff !== 0) return severityDiff;
+
+  return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
+});
+
 
     setFilteredAlerts(filtered);
   }, [alerts, severityFilter, typeFilter, dismissedAlerts]);
@@ -414,7 +387,7 @@ const InteractiveAlerts: React.FC<InteractiveAlertsProps> = ({
                         </div>
                       )}
                       <div className="text-xs text-muted-foreground mt-1">
-                        {alert.timestamp.toLocaleTimeString()}
+                          {new Date(alert.timestamp).toLocaleTimeString()}
                       </div>
                     </div>
                   </div>

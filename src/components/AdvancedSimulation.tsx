@@ -6,23 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Beaker, Droplets, Bug, Factory, TreePine, AlertTriangle, RotateCcw, Save } from 'lucide-react';
-
-interface EnvironmentalFactors {
-  urbanization: number;
-  deforestation: number;
-  climateChange: number;
-  conservation: number;
-  airPollution: number;
-  waterPollution: number;
-  soilPollution: number;
-  invasiveSpecies: number;
-  waterScarcity: number;
-  forestFragmentation: number;
-  industrialExpansion: number;
-  mining: number;
-  tourism: number;
-  agriculture: number;
-}
+import type { EnvironmentalFactors } from '@/lib/types';
 
 interface ScenarioPreset {
   name: string;
@@ -32,7 +16,7 @@ interface ScenarioPreset {
 }
 
 interface AdvancedSimulationProps {
-  environmentalFactors: EnvironmentalFactors; // ✅ Fixed type
+  environmentalFactors: EnvironmentalFactors; 
   onFactorChange: (factor: keyof EnvironmentalFactors, value: number[]) => void;
   onApplyScenario: (scenario: EnvironmentalFactors) => void;
 }

@@ -7,41 +7,7 @@ import {
   RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar
 } from 'recharts';
 import { BarChart3 } from 'lucide-react';
-
-interface StateData {
-  id: string;
-  name: string;
-  forestCover: number;
-  airQuality: number;
-  waterAvailability: number;
-  wildlifeHealth: number;
-  ecoScore: number;
-  population2070Prediction?: {
-    optimistic: {
-      forestCover: number;
-      airQuality: number;
-      waterAvailability: number;
-      wildlifeHealth: number;
-      ecoScore: number;
-    };
-    pessimistic: {
-      forestCover: number;
-      airQuality: number;
-      waterAvailability: number;
-      wildlifeHealth: number;
-      ecoScore: number;
-    };
-  };
-}
-
-interface SpeciesData {
-  id: string;
-  name: string;
-  currentPopulation: number;
-  predicted2070Population: number;
-  status: string;
-  geneticDiversity?: { current: number; predicted2070?: number };
-}
+import type { StateData, SpeciesData} from '@/lib/types';
 
 interface ComparativeAnalyticsProps {
   allStatesData: StateData[];

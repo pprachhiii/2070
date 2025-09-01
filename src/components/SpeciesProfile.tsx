@@ -4,54 +4,11 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { X, MapPin, Heart, Zap } from 'lucide-react';
+import type { SpeciesData } from '@/lib/types';
 
-interface HistoricalPopulation {
-  [year: string]: number;
-}
-
-interface MigrationPatterns {
-  seasonal: boolean;
-  distance: string;
-  corridorsUsed: string[];
-}
-
-interface GeneticDiversity {
-  current: number;
-  predicted2070: number;
-}
-
-interface PopulationScenarios {
-  optimistic: number;
-  pessimistic: number;
-}
-
-interface Species {
-  id: string;
-  name: string;
-  scientificName: string;
-  currentPopulation: number;
-  predicted2070Population: number;
-  status: string;
-  threats: string[];
-  conservationActions: string[];
-  states: string[];
-  description: string;
-  funFacts: string[];
-  image: string;
-  habitatPreferences: string[];
-  dietType: string;
-  averageLifespan: string;
-  conservationStatus2070: string;
-  populationTrend: string;
-  historicalPopulation: HistoricalPopulation;
-  predatorPreyRelationships: string[];
-  migrationPatterns: MigrationPatterns;
-  geneticDiversity: GeneticDiversity;
-  populationScenarios: PopulationScenarios;
-}
 
 interface SpeciesProfileProps {
-  species: Species;
+  species: SpeciesData;
   onClose: () => void;
 }
 

@@ -1,11 +1,19 @@
+// src/lib/types.ts
+export type AlertType = "species" | "environment" | "ecosystem";
+
 export interface Alert {
   id: string;
-  type: string;
-  severity: string;
+  type: AlertType;
+  severity: "low" | "medium" | "high" | string;
   message: string;
   species?: string[];
-  timestamp: string; // or Date
+  state?: string;
+  metric?: string;
+  value?: number;
+  threshold?: number;
+  timestamp: string; // keep as ISO string
 }
+
 export interface EnvironmentalFactors {
   urbanization: number;
   deforestation: number;
@@ -23,6 +31,7 @@ export interface EnvironmentalFactors {
   agriculture: number;
 }
 
+// make coordinates a fixed tuple to satisfy downstream consumers expecting [lat, lon]
 export interface StateData {
   id: string;
   name: string;
@@ -50,7 +59,9 @@ export interface StateData {
       ecoScore: number;
     };
   };
-  coordinates: number[];
+  // enforce tuple for consumers that expect 2 numbers
+  coordinates: [number, number];
+
   historicalData?: {
     [year: string]: {
       forestCover: number;
@@ -60,15 +71,19 @@ export interface StateData {
       ecoScore: number;
     };
   };
+
+  // match component expectations: make pollution fields required when pollutionLevels is present
   pollutionLevels?: {
-    air?: number;
-    water?: number;
-    soil?: number;
+    air: number;
+    water: number;
+    soil: number;
   };
+
   invasiveSpeciesImpact?: number;
   waterScarcityRisk?: number;
   forestFragmentation?: number;
   criticalAlerts?: Alert[];
+
   policyImpacts?: {
     banDeforestation?: { forestCover?: number; wildlifeHealth?: number };
     renewableEnergy?: { airQuality?: number; climateChange?: number };
@@ -77,42 +92,20 @@ export interface StateData {
   };
 }
 
+export type SpeciesStatus =
+  | "endangered"
+  | "vulnerable"
+  | "critically endangered"
+  | "least concern"
+  | string; // keep string fallback to avoid brittle errors
 
-
-
-
-
-
-
-
-
-interface HistoricalPopulation {
-  [year: string]: number;
-}
-
-interface MigrationPatterns {
-  seasonal: boolean;
-  distance: string;
-  corridorsUsed: string[];
-}
-
-interface GeneticDiversity {
-  current: number;
-  predicted2070: number;
-}
-
-interface PopulationScenarios {
-  optimistic: number;
-  pessimistic: number;
-}
-
-export  interface Species {
+export interface SpeciesData {
   id: string;
   name: string;
   scientificName: string;
   currentPopulation: number;
   predicted2070Population: number;
-  status: string;
+  status: SpeciesStatus;
   threats: string[];
   conservationActions: string[];
   states: string[];
@@ -124,14 +117,19 @@ export  interface Species {
   averageLifespan: string;
   conservationStatus2070: string;
   populationTrend: string;
-  historicalPopulation: HistoricalPopulation;
+  historicalPopulation: { [year: string]: number };
   predatorPreyRelationships: string[];
-  migrationPatterns: MigrationPatterns;
-  geneticDiversity: GeneticDiversity;
-  populationScenarios: PopulationScenarios;
-}
-
-export interface SpeciesProfileProps {
-  species: Species;
-  onClose: () => void;
+  migrationPatterns: {
+    seasonal: boolean;
+    distance: string;
+    corridorsUsed: string[];
+  };
+  geneticDiversity: {
+    current: number;
+    predicted2070: number;
+  };
+  populationScenarios: {
+    optimistic: number;
+    pessimistic: number;
+  };
 }

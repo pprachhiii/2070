@@ -3,19 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { TreePine, Droplets, Wind, Heart } from 'lucide-react';
-
-interface StateData {
-  id: string;
-  name: string;
-  forestCover: number;
-  airQuality: number;
-  waterAvailability: number;
-  wildlifeHealth: number;
-  ecoScore: number;
-  majorSpecies: string[];
-  conservationProjects: string[];
-  coordinates: number[];
-}
+import type { StateData} from '@/lib/types';
 
 interface EcoScoreDisplayProps {
   stateData: StateData;

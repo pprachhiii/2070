@@ -4,20 +4,10 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Eye, MapPin, TrendingUp, TrendingDown, Minus } from 'lucide-react';
-
-interface Species {
-  id: string;
-  name: string;
-  currentPopulation: number;
-  predicted2070Population: number;
-  status: string;
-  states: string[];
-  populationTrend: string;
-  description: string;
-}
+import type { SpeciesData} from '@/lib/types';
 
 interface SpeciesListProps {
-  species: Species[];
+  species: SpeciesData[];
   onSpeciesSelect: (speciesId: string) => void;
 }
 

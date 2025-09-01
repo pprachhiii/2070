@@ -1,36 +1,40 @@
 import React, { useState } from "react";
-import { TreePine, X } from "lucide-react";
+import { Users, X } from "lucide-react";
 
 interface NavbarProps {
-  onHomeClick?: () => void; // callback when Wildlife logo/text is clicked
+  onHomeClick?: () => void;
+  onSpeciesClick?: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
+const Navbar: React.FC<NavbarProps> = ({ onHomeClick, onSpeciesClick }) => {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
+
+  // Updated button classes with increased height
+  const buttonClasses =
+    "flex items-center gap-1 font-medium text-white bg-black px-3 py-1.5 rounded-md text-sm transition-colors duration-300 hover:bg-purple-500 hover:text-black";
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
-          {/* Logo */}
+      <nav className="fixed top-0 left-0 w-full z-20 bg-transparent backdrop-blur-md shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+          {/* Left Side Text */}
           <div
-            className="flex items-center gap-2 text-green-600 dark:text-green-400 font-bold text-xl cursor-pointer"
-            onClick={onHomeClick} // triggers the same action as Home
+            className="text-base font-bold cursor-pointer text-green-600 dark:text-green-400"
+            onClick={onHomeClick}
           >
-            <TreePine size={22} />
-            Wildlife
+            2070
           </div>
 
-          {/* Links */}
-          <div className="hidden md:flex gap-6 text-gray-700 dark:text-gray-200 font-medium items-center">
-            <a href="#features" className="hover:text-green-600">Features</a>
-            <a href="#about" className="hover:text-green-600">About</a>
-            <a href="#contact" className="hover:text-green-600">Contact</a>
+          {/* Right Side Buttons */}
+          <div className="flex items-center gap-2">
+            <button className={buttonClasses} onClick={onSpeciesClick}>
+              <Users size={14} />
+              Species
+            </button>
 
-            {/* Feedback Button */}
             <button
               onClick={() => setIsFeedbackOpen(true)}
-              className="ml-4 px-4 py-1.5 rounded-lg bg-green-600 text-white hover:bg-green-700 transition shadow-md"
+              className={buttonClasses}
             >
               Feedback
             </button>
@@ -46,8 +50,9 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
             onClick={() => setIsFeedbackOpen(false)}
           />
           <div className="w-1/4 min-w-[300px] bg-white dark:bg-gray-900 shadow-xl p-6 relative animate-slideInRight">
+            {/* Modified X button */}
             <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-red-500"
+              className="absolute top-3 right-3 text-red-500 bg-transparent p-0 transition-transform duration-200 hover:scale-110 focus:outline-none"
               onClick={() => setIsFeedbackOpen(false)}
             >
               <X size={22} />

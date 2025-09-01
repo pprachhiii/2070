@@ -358,11 +358,6 @@
       "populationScenarios": {
         "optimistic": 180000,
         "pessimistic": 120000
-      },
-      "multimedia": {
-        "documentaryUrl": "/videos/olive-ridley-2070.mp4",
-        "droneFootage": "/videos/turtle-nesting-drone.mp4",
-        "3dModel": "/models/olive-ridley-3d.glb"
       }
     }
   ]

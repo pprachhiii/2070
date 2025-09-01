@@ -180,7 +180,7 @@
           "ecoScore": 75.8
         }
       },
-      "coordinates": [15.3173, 75.7139],
+      "coordinates": [15.3173, 75.7139] ,
       "criticalAlerts": [
         {
           "type": "environment",

@@ -4,13 +4,12 @@ import { Slider } from '@/components/ui/slider';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { MapPin, Zap, Clock } from 'lucide-react';
+import { MapPin, Zap } from 'lucide-react';
 import InteractiveMap from './InteractiveMap';
 import SpeciesProfile from './SpeciesProfile';
 import ConservationActions from './ConservationActions';
 import EcoScoreDisplay from './EcoScoreDisplay';
 import PopulationChart from './PopulationChart';
-import TemporalAnalysis from './TemporalAnalysis';
 import ComparativeAnalytics from './ComparativeAnalytics';
 import InteractiveAlerts from './InteractiveAlerts';
 import AdvancedSimulation from './AdvancedSimulation';
@@ -18,7 +17,7 @@ import DataDrivenInsights from './DataDrivenInsights';
 import AdvancedVisualizations from './AdvancedVisualizations';
 import enhancedSpeciesData from '../data/speciesData.json';
 import enhancedStateData from '../data/stateData.json';
-import type { StateData, Species, EnvironmentalFactors } from '@/lib/types';
+import type { StateData, SpeciesData, EnvironmentalFactors } from '@/lib/types';
 
 const Dashboard: React.FC = () => {
   const [selectedState, setSelectedState] = useState<string | undefined>(undefined);
@@ -41,70 +40,130 @@ const Dashboard: React.FC = () => {
     agriculture: 55
   });
 
-  // Use enhanced data for better functionality
-  const [simulatedData, setSimulatedData] = useState<StateData[]>(enhancedStateData.states as StateData[]);
-  const [simulatedSpecies, setSimulatedSpecies] = useState<Species[]>(enhancedSpeciesData.species as Species[]);
+const [simulatedData, setSimulatedData] = useState<StateData[]>(
+  (enhancedStateData.states as unknown as StateData[]).map(state => ({
+    ...state,
+    criticalAlerts: state.criticalAlerts?.map((alert, index) => ({
+      ...alert, 
+      id: `${state.id}-alert-${index}`, // override safely
+      timestamp: new Date().toISOString() // override safely
+    }))
+  }))
+);
+
+const [simulatedSpecies, setSimulatedSpecies] = useState<SpeciesData[]>(enhancedSpeciesData.species as SpeciesData[]);
 
   useEffect(() => {
-    // Enhanced simulation logic for all factors
-    const newStateData: StateData[] = (enhancedStateData.states as StateData[]).map(state => {
-      const urbanizationImpact = (environmentalFactors.urbanization - 50) * 0.4;
-      const deforestationImpact = (environmentalFactors.deforestation - 30) * 0.6;
-      const climateImpact = (environmentalFactors.climateChange - 60) * 0.3;
-      const conservationImpact = (environmentalFactors.conservation - 70) * 0.8;
+  // Enhanced simulation logic for all factors
+  const newStateData: StateData[] = (enhancedStateData.states as unknown as StateData[]).map(state => {
+    // ensure coordinates is always a tuple [lat, lon]
+    const coords: [number, number] =
+      Array.isArray(state.coordinates) && state.coordinates.length === 2
+        ? [state.coordinates[0], state.coordinates[1]]
+        : [0, 0];
 
-      // Advanced factors impact
-      const pollutionImpact = (environmentalFactors.airPollution + environmentalFactors.waterPollution + environmentalFactors.soilPollution) / 3 * 0.3;
-      const invasiveImpact = environmentalFactors.invasiveSpecies * 0.2;
-      const waterScarcityImpact = environmentalFactors.waterScarcity * 0.4;
-      const fragmentationImpact = environmentalFactors.forestFragmentation * 0.3;
-      const industrialImpact = environmentalFactors.industrialExpansion * 0.5;
-      const miningImpact = environmentalFactors.mining * 0.4;
-      const agricultureImpact = environmentalFactors.agriculture * 0.3;
+    const urbanizationImpact = (environmentalFactors.urbanization - 50) * 0.4;
+    const deforestationImpact = (environmentalFactors.deforestation - 30) * 0.6;
+    const climateImpact = (environmentalFactors.climateChange - 60) * 0.3;
+    const conservationImpact = (environmentalFactors.conservation - 70) * 0.8;
 
-      const totalNegativeImpact = urbanizationImpact + deforestationImpact + climateImpact + pollutionImpact +
-        invasiveImpact + waterScarcityImpact + fragmentationImpact + industrialImpact +
-        miningImpact + agricultureImpact;
-      const totalPositiveImpact = conservationImpact + (environmentalFactors.tourism - 50) * 0.1;
+    // Advanced factors impact
+    const pollutionImpact =
+      (environmentalFactors.airPollution +
+        environmentalFactors.waterPollution +
+        environmentalFactors.soilPollution) /
+      3 *
+      0.3;
+    const invasiveImpact = environmentalFactors.invasiveSpecies * 0.2;
+    const waterScarcityImpact = environmentalFactors.waterScarcity * 0.4;
+    const fragmentationImpact = environmentalFactors.forestFragmentation * 0.3;
+    const industrialImpact = environmentalFactors.industrialExpansion * 0.5;
+    const miningImpact = environmentalFactors.mining * 0.4;
+    const agricultureImpact = environmentalFactors.agriculture * 0.3;
 
-      const totalImpact = totalPositiveImpact - totalNegativeImpact;
+    const totalNegativeImpact =
+      urbanizationImpact +
+      deforestationImpact +
+      climateImpact +
+      pollutionImpact +
+      invasiveImpact +
+      waterScarcityImpact +
+      fragmentationImpact +
+      industrialImpact +
+      miningImpact +
+      agricultureImpact;
 
-      return {
-        ...state,
-        forestCover: Math.max(5, Math.min(60, state.forestCover + totalImpact * 0.3)),
-        wildlifeHealth: Math.max(20, Math.min(100, state.wildlifeHealth + totalImpact * 0.8)),
-        airQuality: Math.max(20, Math.min(100, state.airQuality + totalImpact * 0.4 - environmentalFactors.airPollution * 0.2)),
-        waterAvailability: Math.max(20, Math.min(100, state.waterAvailability + totalImpact * 0.2 - environmentalFactors.waterScarcity * 0.3)),
-        ecoScore: Math.max(30, Math.min(100, state.ecoScore + totalImpact * 0.6))
-      };
-    });
+    const totalPositiveImpact =
+      conservationImpact + (environmentalFactors.tourism - 50) * 0.1;
 
-    const newSpeciesData: Species[] = (enhancedSpeciesData.species as Species[]).map(species => {
-      const basePopulation = species.currentPopulation;
-      const conservationBonus = (environmentalFactors.conservation - 50) * 0.03;
-      const pollutionPenalty = (environmentalFactors.airPollution + environmentalFactors.waterPollution) / 200;
-      const habitatLoss = (environmentalFactors.deforestation + environmentalFactors.forestFragmentation + environmentalFactors.urbanization) / 300;
-      const climateStress = environmentalFactors.climateChange / 100 * 0.2;
-      const invasiveStress = environmentalFactors.invasiveSpecies / 100 * 0.15;
+    const totalImpact = totalPositiveImpact - totalNegativeImpact;
 
-      const totalStress = habitatLoss + climateStress + invasiveStress + pollutionPenalty;
-      const survivalRate = Math.max(0.3, 1 - totalStress + conservationBonus);
+    return {
+      ...state,
+      coordinates: coords, // 👈 ensures type matches [number, number]
+      forestCover: Math.max(5, Math.min(60, state.forestCover + totalImpact * 0.3)),
+      wildlifeHealth: Math.max(
+        20,
+        Math.min(100, state.wildlifeHealth + totalImpact * 0.8)
+      ),
+      airQuality: Math.max(
+        20,
+        Math.min(
+          100,
+          state.airQuality + totalImpact * 0.4 - environmentalFactors.airPollution * 0.2
+        )
+      ),
+      waterAvailability: Math.max(
+        20,
+        Math.min(
+          100,
+          state.waterAvailability +
+            totalImpact * 0.2 -
+            environmentalFactors.waterScarcity * 0.3
+        )
+      ),
+      ecoScore: Math.max(30, Math.min(100, state.ecoScore + totalImpact * 0.6)),
+    };
+  });
 
-      const newPopulation = Math.max(
-        Math.floor(basePopulation * 0.2),
-        Math.floor(basePopulation * survivalRate)
-      );
+  const newSpeciesData: SpeciesData[] = (enhancedSpeciesData.species as SpeciesData[]).map(species => {
+    const basePopulation = species.currentPopulation;
+    const conservationBonus = (environmentalFactors.conservation - 50) * 0.03;
+    const pollutionPenalty =
+      (environmentalFactors.airPollution + environmentalFactors.waterPollution) /
+      200;
+    const habitatLoss =
+      (environmentalFactors.deforestation +
+        environmentalFactors.forestFragmentation +
+        environmentalFactors.urbanization) /
+      300;
+    const climateStress = (environmentalFactors.climateChange / 100) * 0.2;
+    const invasiveStress = (environmentalFactors.invasiveSpecies / 100) * 0.15;
 
-      return {
-        ...species,
-        predicted2070Population: newPopulation,
-        populationTrend: newPopulation > basePopulation ? 'increasing' : newPopulation < basePopulation * 0.9 ? 'decreasing' : 'stable'
-      };
-    });
+    const totalStress = habitatLoss + climateStress + invasiveStress + pollutionPenalty;
+    const survivalRate = Math.max(0.3, 1 - totalStress + conservationBonus);
 
-    setSimulatedData(newStateData);
-    setSimulatedSpecies(newSpeciesData);
-  }, [environmentalFactors]);
+    const newPopulation = Math.max(
+      Math.floor(basePopulation * 0.2),
+      Math.floor(basePopulation * survivalRate)
+    );
+
+    return {
+      ...species,
+      predicted2070Population: newPopulation,
+      populationTrend:
+        newPopulation > basePopulation
+          ? "increasing"
+          : newPopulation < basePopulation * 0.9
+          ? "decreasing"
+          : "stable",
+    };
+  });
+
+  setSimulatedData(newStateData);
+  setSimulatedSpecies(newSpeciesData);
+}, [environmentalFactors]);
+
 
   const handleFactorChange = (factor: keyof EnvironmentalFactors, value: number[]) => {
     setEnvironmentalFactors(prev => ({
@@ -155,7 +214,7 @@ const Dashboard: React.FC = () => {
       <div className="container mx-auto p-6">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
+          <h1 className="text-5xl font-bold text-green-500 mb-4">
             India 2070 Wildlife Dashboard
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -198,7 +257,7 @@ const Dashboard: React.FC = () => {
                     <InteractiveMap
                       stateData={simulatedData}
                       onStateSelect={setSelectedState}
-                      selectedState={selectedState}
+                      selectedState={selectedState ?? null}
                     />
                   </CardContent>
                 </Card>
@@ -335,20 +394,6 @@ const Dashboard: React.FC = () => {
             )}
           </TabsContent>
 
-          {/* Temporal Analysis Tab */}
-          <TabsContent value="temporal" className="space-y-6">
-            {selectedStateData ? (
-              <TemporalAnalysis
-                stateData={selectedStateData}
-                speciesData={simulatedSpecies.filter(s => selectedStateData.majorSpecies.includes(s.id))}
-              />
-            ) : (
-              <Card className="p-8 text-center">
-                <Clock className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-                <p className="text-lg text-muted-foreground">Select a state from the map to view temporal analysis</p>
-              </Card>
-            )}
-          </TabsContent>
 
           {/* Comparative Analytics Tab */}
           <TabsContent value="comparison" className="space-y-6">
@@ -381,8 +426,6 @@ const Dashboard: React.FC = () => {
           <TabsContent value="visualizations" className="space-y-6">
             <AdvancedVisualizations
               statesData={simulatedData}
-              speciesData={simulatedSpecies}
-              selectedState={selectedStateData}
             />
           </TabsContent>
         </Tabs>

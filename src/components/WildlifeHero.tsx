@@ -1,21 +1,20 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Play, TreePine, Map, Activity, BarChart3, Clock } from 'lucide-react';
+import { Play } from 'lucide-react';
 import './styles/wildelifeBackground.css';
 import Navbar from './Navbar';
 
 interface WildlifeHeroProps {
   onGetStarted: () => void;
+  onSpeciesClick: () => void;
 }
 
-const WildlifeHero: React.FC<WildlifeHeroProps> = ({ onGetStarted }) => {
+const WildlifeHero: React.FC<WildlifeHeroProps> = ({ onGetStarted, onSpeciesClick }) => {
   return (
     <div className="relative w-full min-h-screen flex flex-col">
-      {/* Navbar */}
       <Navbar
-        onHomeClick={() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
+        onHomeClick={onGetStarted}
+        onSpeciesClick={onSpeciesClick} 
       />
 
       {/* Hero Section */}
@@ -46,46 +45,33 @@ const WildlifeHero: React.FC<WildlifeHeroProps> = ({ onGetStarted }) => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
             <Button
               size="lg"
-              className="px-8 py-4 text-lg shadow-lg hover:scale-105 transition"
+              className="px-8 py-4 text-lg shadow-lg bg-green-600 text-black hover:bg-green-600 hover:scale-105 focus:outline-none transition"
               onClick={onGetStarted}
             >
               <Play className="mr-2" size={20} />
               Get Started
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="px-8 py-4 text-lg border-2 hover:bg-green-50 dark:hover:bg-gray-800"
-            >
-              <TreePine className="mr-2" size={20} />
-              Learn More
-            </Button>
-          </div>
 
-          {/* Features List */}
-          <div id="features" className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {[
-              { icon: <Map size={22} />, text: "Interactive Maps" },
-              { icon: <Activity size={22} />, text: "Population Models" },
-              { icon: <BarChart3 size={22} />, text: "Impact Insights" },
-              { icon: <Clock size={22} />, text: "2070 Scenarios" },
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center p-4 bg-white dark:bg-gray-800 shadow-md rounded-2xl hover:scale-105 transition"
+            <a
+              href="https://wildlife.org/1700-wildlife-species-at-risk-for-extinction-by-2070/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+            >
+              <Button
+                size="lg"
+                variant="outline"
+                className="px-8 py-4 text-lg border-2 text-black hover:bg-green-50 dark:hover:bg-gray-800 w-full sm:w-auto"
               >
-                <div className="mb-2 text-green-600 dark:text-green-400">{feature.icon}</div>
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-200">{feature.text}</span>
-              </div>
-            ))}
+                Learn More
+              </Button>
+            </a>
           </div>
         </div>
       </div>
-
-
     </div>
   );
 };

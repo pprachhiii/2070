@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { MapPin } from 'lucide-react';
-
-interface StateData {
-  id: string;
-  name: string;
-  forestCover: number;
-  airQuality: number;
-  waterAvailability: number;
-  wildlifeHealth: number;
-  ecoScore: number;
-  majorSpecies: string[];
-  conservationProjects: string[];
-  coordinates: number[];
-}
+import type { StateData} from '@/lib/types';
 
 interface InteractiveMapProps {
   stateData: StateData[];
@@ -66,7 +54,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
   const hoveredStateData = hoveredState ? stateData.find(s => s.id === hoveredState) : null;
 
   return (
-    <div className="relative w-full h-[700px] bg-gradient-to-br from-slate-900 to-slate-800 rounded-lg overflow-hidden">
+    <div className="relative w-full h-[700px] bg-gradient-to-br from-black via-gray-900 to-black rounded-lg overflow-hidden">
       <svg width="100%" height="100%" viewBox="0 0 900 900">
         <defs>
           <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">

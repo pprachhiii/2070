@@ -3,53 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
-
-interface StateData {
-  id: string;
-  name: string;
-  forestCover: number;
-  airQuality: number;
-  waterAvailability: number;
-  wildlifeHealth: number;
-  ecoScore: number;
-  majorSpecies: string[];
-  conservationProjects: string[];
-  threats?: string[];
-  pollutionLevels?: {
-    air: number;
-    water: number;
-    soil: number;
-  };
-  invasiveSpeciesImpact?: number;
-  waterScarcityRisk?: number;
-  forestFragmentation?: number;
-  historicalData?: Record<string, Partial<Omit<StateData, 'id' | 'name' | 'majorSpecies' | 'conservationProjects' | 'coordinates'>>>;
-  policyImpacts?: Record<string, Record<string, number>>;
-  population2070Prediction?: {
-    optimistic: Partial<StateData>;
-    pessimistic: Partial<StateData>;
-  };
-  coordinates: number[];
-  criticalAlerts?: {
-    type: string;
-    severity: string;
-    message: string;
-    species?: string[];
-  }[];
-}
-
-interface Species {
-  id: string;
-  name: string;
-  currentPopulation: number;
-  predicted2070Population: number;
-  status: string;
-  populationTrend: string;
-}
+import type { StateData, SpeciesData} from '@/lib/types';
 
 interface PopulationChartProps {
   stateData: StateData;
-  speciesData: Species[];
+  speciesData: SpeciesData[];
 }
 
 const PopulationChart: React.FC<PopulationChartProps> = ({ stateData, speciesData }) => {

@@ -3,30 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Brain, Target, CheckCircle } from 'lucide-react';
-
-interface Species {
-  id: string;
-  name: string;
-  currentPopulation: number;
-  predicted2070Population: number;
-  status: 'endangered' | 'critically endangered' | 'vulnerable' | 'least concern';
-}
-
-interface StateData {
-  id: string;
-  name: string;
-  forestCover: number;
-  ecoScore: number;
-  waterAvailability: number;
-  majorSpecies: string[];
-}
-
-interface EnvironmentalFactors {
-  deforestation: number;
-  conservation: number;
-  climateChange: number;
-  [key: string]: number;
-}
+import type { StateData, SpeciesData, EnvironmentalFactors } from '@/lib/types';
 
 interface Recommendation {
   id: string;
@@ -60,7 +37,7 @@ interface Prediction {
 
 interface DataDrivenInsightsProps {
   statesData: StateData[];
-  speciesData: Species[];
+  speciesData: SpeciesData[];
   environmentalFactors: EnvironmentalFactors;
   selectedState?: StateData;
 }
