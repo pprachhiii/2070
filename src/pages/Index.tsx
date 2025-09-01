@@ -1,40 +1,44 @@
-import React, { useState } from 'react'; 
-import WildlifeHero from '../components/WildlifeHero';
-import Dashboard from '../components/Dashboard';
-import SpeciesList from '../components/SpeciesList';
-import SpeciesProfile from '../components/SpeciesProfile';
-import { Home, BarChart3, Users } from 'lucide-react';
-import speciesData from '../data/speciesData.json';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import WildlifeHero from "../components/WildlifeHero";
+import Dashboard from "../components/Dashboard";
+import SpeciesList from "../components/SpeciesList";
+import SpeciesProfile from "../components/SpeciesProfile";
+import { Home, BarChart3, Users, Bell } from "lucide-react";
+import speciesData from "../data/speciesData.json";
 
-type ViewMode = 'hero' | 'dashboard' | 'species' | 'profile';
+type ViewMode = "hero" | "dashboard" | "species" | "profile";
 
 const Index = () => {
-  const [currentView, setCurrentView] = useState<ViewMode>('hero');
+  const [currentView, setCurrentView] = useState<ViewMode>("hero");
   const [selectedSpecies, setSelectedSpecies] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleSpeciesSelect = (speciesId: string) => {
     setSelectedSpecies(speciesId);
-    setCurrentView('profile');
+    setCurrentView("profile");
   };
 
   const selectedSpeciesData = selectedSpecies
-    ? speciesData.species.find(s => s.id === selectedSpecies)
+    ? speciesData.species.find((s) => s.id === selectedSpecies)
     : null;
 
   const renderNavigation = () => {
-    if (currentView === 'hero') return null;
+    if (currentView === "hero") return null;
 
-    // Base classes for buttons
     const baseButtonClasses =
       "flex items-center gap-2 font-medium px-3 py-1.5 rounded-md text-sm transition-colors duration-300";
 
-    // Function to determine classes based on selection
     const getButtonClasses = (view: ViewMode) => {
       return `${baseButtonClasses} ${
         currentView === view
-          ? 'bg-green-500 text-black'
-          : 'bg-black text-white hover:bg-purple-500 hover:text-black'
+          ? "bg-green-500 text-black"
+          : "bg-black text-white hover:bg-purple-500 hover:text-black"
       }`;
+    };
+
+    const getAlertButtonClasses = () => {
+      return `${baseButtonClasses} bg-red-600 text-white hover:bg-red-700 hover:text-black`;
     };
 
     return (
@@ -42,19 +46,36 @@ const Index = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <button className={getButtonClasses('hero')} onClick={() => setCurrentView('hero')}>
+              <button
+                className={getButtonClasses("hero")}
+                onClick={() => setCurrentView("hero")}
+              >
                 <Home size={16} />
                 Home
               </button>
 
-              <button className={getButtonClasses('dashboard')} onClick={() => setCurrentView('dashboard')}>
+              <button
+                className={getButtonClasses("dashboard")}
+                onClick={() => setCurrentView("dashboard")}
+              >
                 <BarChart3 size={16} />
                 Dashboard
               </button>
 
-              <button className={getButtonClasses('species')} onClick={() => setCurrentView('species')}>
+              <button
+                className={getButtonClasses("species")}
+                onClick={() => setCurrentView("species")}
+              >
                 <Users size={16} />
                 Species
+              </button>
+
+              <button
+                className={getAlertButtonClasses()}
+                onClick={() => navigate("/alerts")}
+              >
+                <Bell size={16} />
+                Alerts
               </button>
             </div>
           </div>
@@ -64,25 +85,25 @@ const Index = () => {
   };
 
   const renderContent = () => {
-    const contentClass = currentView === 'hero' ? '' : 'pt-20';
+    const contentClass = currentView === "hero" ? "" : "pt-20";
 
     switch (currentView) {
-      case 'hero':
+      case "hero":
         return (
           <WildlifeHero
-            onGetStarted={() => setCurrentView('dashboard')}
-            onSpeciesClick={() => setCurrentView('species')}
+            onGetStarted={() => setCurrentView("dashboard")}
+            onSpeciesClick={() => setCurrentView("species")}
           />
         );
 
-      case 'dashboard':
+      case "dashboard":
         return (
           <div className={contentClass}>
             <Dashboard />
           </div>
         );
 
-      case 'species':
+      case "species":
         return (
           <div className={`${contentClass} p-6`}>
             <SpeciesList
@@ -92,14 +113,14 @@ const Index = () => {
           </div>
         );
 
-      case 'profile':
+      case "profile":
         return (
           <div className={contentClass}>
             {selectedSpeciesData && (
               <SpeciesProfile
                 species={selectedSpeciesData}
                 onClose={() => {
-                  setCurrentView('species');
+                  setCurrentView("species");
                   setSelectedSpecies(null);
                 }}
               />
@@ -110,8 +131,8 @@ const Index = () => {
       default:
         return (
           <WildlifeHero
-            onGetStarted={() => setCurrentView('dashboard')}
-            onSpeciesClick={() => setCurrentView('species')}
+            onGetStarted={() => setCurrentView("dashboard")}
+            onSpeciesClick={() => setCurrentView("species")}
           />
         );
     }
