@@ -58,7 +58,7 @@ const WildlifeHero: React.FC<WildlifeHeroProps> = ({ onGetStarted, onSpeciesClic
               <Button
                 size="lg"
                 variant="outline"
-                className="px-8 py-4 text-lg border-2 text-black hover:bg-green-50 dark:hover:bg-gray-800 w-full sm:w-auto"
+                className="px-8 py-4 text-lg border-2 text-white! bg-black w-full sm:w-auto"
               >
                 Learn More
               </Button>
