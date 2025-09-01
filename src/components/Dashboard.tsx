@@ -221,7 +221,7 @@ const [simulatedSpecies, setSimulatedSpecies] = useState<SpeciesData[]>(enhanced
 
         {/* Enhanced Dashboard with Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-5">
-          <TabsList className="grid w-full grid-cols-6">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="comparison">Comparison</TabsTrigger>
             <TabsTrigger value="simulation">Advanced Simulation</TabsTrigger>
@@ -229,7 +229,7 @@ const [simulatedSpecies, setSimulatedSpecies] = useState<SpeciesData[]>(enhanced
             <TabsTrigger value="visualizations">Visualizations</TabsTrigger>
           </TabsList>
 
-          {/* Overview Tab - Original Dashboard */}
+          {/* Overview Tab*/}
           <TabsContent value="overview" className="space-y-5">
             
             {/* Main Dashboard Grid */}

@@ -184,11 +184,10 @@ const DataDrivenInsights: React.FC<DataDrivenInsightsProps> = ({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="recommendations" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3">
+        <Tabs defaultValue="recommendations" className="space-y-4">
+          <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="recommendations">Smart Recommendations</TabsTrigger>
             <TabsTrigger value="predictions">AI Predictions</TabsTrigger>
-            <TabsTrigger value="analysis">Impact Analysis</TabsTrigger>
           </TabsList>
 
           <TabsContent value="recommendations">
