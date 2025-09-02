@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
-import { MessageCircle } from 'lucide-react';
 import Navbar from './Navbar';
 import './styles/wildelifeBackground.css';
 
@@ -63,48 +62,6 @@ const WildlifeHero: React.FC<WildlifeHeroProps> = ({ onGetStarted, onSpeciesClic
                 Learn More
               </Button>
             </a>
-          </div>
-
-          {/* Feedback Form */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-medium text-white mb-6 flex items-center gap-3">
-              <MessageCircle size={24} className="text-yellow-400" />
-              Send Your Feedback
-            </h3>
-
-            <form
-              action="https://formspree.io/f/movepkgr"
-              method="POST"
-              className="space-y-4"
-            >
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-                className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-blue-200 focus:outline-none focus:border-yellow-400 transition-colors"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-                className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-blue-200 focus:outline-none focus:border-yellow-400 transition-colors"
-              />
-              <textarea
-                name="message"
-                rows={4}
-                placeholder="Share your thoughts about wildlife or this project!"
-                required
-                className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-blue-200 focus:outline-none focus:border-yellow-400 transition-colors resize-none"
-              />
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-yellow-400 to-orange-400 text-blue-900 py-3 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg"
-              >
-                Send Feedback
-              </button>
-            </form>
           </div>
         </div>
       </div>
